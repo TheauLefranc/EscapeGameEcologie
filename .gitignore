@@ -32,6 +32,8 @@ Thumbs.db
 logs/
 *.log
 
+public/data/transactions_EUTL_PUBLIC_NOTESD_20251031.csv
+
 # Lock files (optionnel - à commenter si vous voulez les versionner)
 # package-lock.json
 # yarn.lock
