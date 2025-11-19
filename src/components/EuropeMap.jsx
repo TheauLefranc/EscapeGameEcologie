@@ -11,13 +11,12 @@ export default function EuropeMap() {
     const drawMap = async () => {
       try {
         d3.select(ref.current).selectAll("*").remove();
-        
-        const world = await d3.json(
-          "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json"
-        );
-        
-        const countries = topojson.feature(world, world.objects.countries);
-        const width = 800;
+
+        const world = await d3.json("/data/Pays.json");
+
+        const countries = topojson.feature(world, world.objects.CNTR_RG_20M_2024_4326);
+
+        const width = 1200;
         const height = 600;
       
         if (!isMounted) return;
@@ -39,13 +38,13 @@ export default function EuropeMap() {
         
         const path = d3.geoPath().projection(
           d3.geoMercator()
-            .center([13, 52]) 
-            .scale(400)
+            .center([13, 54]) 
+            .scale(500)
             .translate([width / 2, height / 2])
         );
         
         const states = g.append("g")
-          .attr("fill", "#444")
+          .attr("fill", "#4447e9ff")
           .attr("cursor", "pointer")
           .selectAll("path")
           .data(countries.features)
@@ -54,13 +53,23 @@ export default function EuropeMap() {
           .attr("d", path);
         
         states.append("title")
-          .text(d => d.properties.name); 
+          .text(d => d.properties.NAME_FREN); 
+
+
         g.append("path")
           .attr("fill", "none")
           .attr("stroke", "white")
           .attr("stroke-linejoin", "round")
-          .attr("d", path(topojson.mesh(world, world.objects.countries, (a, b) => a !== b)));
+          .attr("d", path(topojson.mesh(world, world.objects.CNTR_RG_20M_2024_4326, (a, b) => a !== b)));
           
+        svg.append("text")
+          .attr("x", width - 10)
+          .attr("y", height - 10)
+          .attr("text-anchor", "end")
+          .style("font-size", "12px")
+          .style("fill", "rgba(255, 255, 255, 0.7)")
+          .text("Source: FR: © EuroGeographics pour les limites administratives");
+
         svg.call(zoom);
       
         function reset() {
