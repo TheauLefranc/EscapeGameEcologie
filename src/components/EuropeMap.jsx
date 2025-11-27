@@ -7,18 +7,13 @@ export default function EuropeMap() {
   
   useEffect(() => {
     let isMounted = true;
-    
     const drawMap = async () => {
       try {
         d3.select(ref.current).selectAll("*").remove();
-
         const world = await d3.json("/data/Pays.json");
-
         const countries = topojson.feature(world, world.objects.CNTR_RG_20M_2024_4326);
-
         const width = 1200;
         const height = 600;
-      
         if (!isMounted) return;
         
         const zoom = d3.zoom()
@@ -54,8 +49,6 @@ export default function EuropeMap() {
         
         states.append("title")
           .text(d => d.properties.NAME_FREN); 
-
-
         g.append("path")
           .attr("fill", "none")
           .attr("stroke", "white")
