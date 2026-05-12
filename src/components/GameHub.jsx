@@ -11,6 +11,9 @@ const DOCS = [
   { id: "localisation_usine",   icon: "📍", title: "Localisation de l'usine" },
   { id: "street_view",          icon: "🏭", title: "Street View — Usine Frangey 2011" },
   { id: "discussion_gardien",   icon: "💬", title: "Discussion — Gardien d'usine" },
+  { id: "badge",                icon: "🪪", title: "Badge — Site industriel" },
+  { id: "frangey_2014",         icon: "📸", title: "Photo Frangey 2014" },
+  { id: "code_barre_doc",       icon: "█▌", title: "Code-barres — Badge" },
 ];
 
 // ── Définition des puzzles ─────────────────────────────────
@@ -65,12 +68,45 @@ const PUZZLES = [
     id: "puzzle4",
     num: "05",
     title: "Entrer dans l'usine",
-    desc: "Vous avez localisé l'usine. Trouvez le code d'accès pour clore l'enquête.",
+    desc: "Vous avez localisé l'usine. Trouvez le code d'accès pour entrer.",
     needs: ["street_view", "discussion_gardien"],
     needsLabel: "Nécessite : Street View + Gardien + Code 951",
     needsExtra: "puzzle2",
     result: "9512",
     resultLabel: "Code d'accès",
+  },
+  {
+    id: "puzzle5",
+    num: "06",
+    title: "Discussion avec l'employé",
+    desc: "À l'intérieur de l'usine, vous croisez Flaurient. Il vous transmet discrètement des informations sur les archives.",
+    needs: ["badge"],
+    needsLabel: "Nécessite : Badge + Entrer dans l'usine (Énigme 5)",
+    needsExtra: "puzzle4",
+    result: "3512",
+    resultLabel: "Code archives",
+  },
+  {
+    id: "puzzle6",
+    num: "07",
+    title: "Enigme du code-barres",
+    desc: "Un code-barres mystérieux figure sur le badge. Déchiffrez-le pour trouver un nombre clé.",
+    needs: ["frangey_2014", "code_barre_doc"],
+    needsLabel: "Nécessite : Photo Frangey 2014 + Code-barres",
+    needsExtra: null,
+    result: "184210",
+    resultLabel: "Nombre mystère",
+  },
+  {
+    id: "puzzle7",
+    num: "08",
+    title: "Enigme du surplus de quotas",
+    desc: "Vous avez toutes les preuves. Calculez le surplus de quotas carbone frauduleux pour clore l'affaire.",
+    needs: [],
+    needsLabel: "Nécessite : résoudre l'Énigme 7 (code-barres)",
+    needsExtra: "puzzle6",
+    result: "142 000",
+    resultLabel: "Surplus frauduleux",
   },
 ];
 
@@ -101,7 +137,7 @@ export default function GameHub({ gameState, onViewDoc, onGoPuzzle, onBack }) {
         <button className="hub-nav-back" onClick={onBack}>← Accueil</button>
         <span className="hub-nav-title">Opération : Escape les quotas</span>
         <span className="hub-nav-progress">
-          Progression : <strong>{solved} / 5</strong> énigmes résolues
+          Progression : <strong>{solved} / 8</strong> énigmes résolues
         </span>
       </div>
 

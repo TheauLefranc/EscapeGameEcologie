@@ -337,6 +337,75 @@ const DOC_CONTENT = {
       </>
     ),
   },
+
+  badge: {
+    topbarLabel: "🪪 Document — Badge site industriel",
+    theme: "dark",
+    context: "En discutant avec le gardien, ce dernier laisse tomber son badge d'accès sans s'en apercevoir. Vous le ramassez discrètement avant qu'il ne s'en rende compte. Ce badge porte plusieurs informations intéressantes.",
+    render: () => (
+      <>
+        <div className="dv-title dv-title--dark">Badge d'accès — Site industriel Frangey</div>
+        <div className="dv-subtitle dv-subtitle--dark">Retrouvé lors de la discussion avec le gardien</div>
+        <div className="dv-placeholder dv-placeholder--dark" style={{ minHeight: "240px" }}>
+          <div className="dv-placeholder-icon">🪪</div>
+          <div className="dv-placeholder-text">
+            [PLACEHOLDER — Insérer ici l'image du badge d'accès avec le code-barres visible]
+          </div>
+        </div>
+        <div className="dv-body dv-body--dark">
+          <p>[PLACEHOLDER — Informations visibles sur le badge : nom de l'installation, numéro, code-barres en bas]</p>
+        </div>
+      </>
+    ),
+  },
+
+  frangey_2014: {
+    topbarLabel: "📸 Document — Photo Frangey 2014",
+    theme: "dark",
+    context: null,
+    render: () => (
+      <>
+        <div className="dv-title dv-title--dark">Photo de l'usine — Frangey, 2014</div>
+        <div className="dv-subtitle dv-subtitle--dark">
+          Photographie de la façade principale — Année 2014
+        </div>
+        <div className="dv-placeholder dv-placeholder--dark" style={{ minHeight: "260px" }}>
+          <div className="dv-placeholder-icon">📸</div>
+          <div className="dv-placeholder-text">
+            [PLACEHOLDER — Insérer ici la photo de l'usine Frangey prise en 2014]
+            <br /><br />
+            Un numéro de salle est visible sur la porte principale
+          </div>
+        </div>
+        <div className="dv-body dv-body--dark">
+          <p>[PLACEHOLDER — Description des éléments visibles sur la photo : numéro de bâtiment, enseignes, détails utiles]</p>
+        </div>
+      </>
+    ),
+  },
+
+  code_barre_doc: {
+    topbarLabel: "█▌ Document — Code-barres badge",
+    theme: "dark",
+    context: "Dans les archives de l'usine, vous retrouvez un document portant le même code-barres que celui du badge. Une loupe posée sur le bureau vous permet d'examiner le code en détail.",
+    render: () => (
+      <>
+        <div className="dv-title dv-title--dark">Code-barres — Badge industriel (agrandissement)</div>
+        <div className="dv-subtitle dv-subtitle--dark">
+          Code-barres EAN-13 — Document récupéré dans les archives
+        </div>
+        <div className="dv-placeholder dv-placeholder--dark" style={{ minHeight: "200px" }}>
+          <div className="dv-placeholder-icon" style={{ fontSize: "2.5rem" }}>█▌█▌███▌█</div>
+          <div className="dv-placeholder-text">
+            [PLACEHOLDER — Insérer ici le code-barres en haute résolution à décoder]
+          </div>
+        </div>
+        <div className="dv-body dv-body--dark">
+          <p>[PLACEHOLDER — Indications sur le type de code-barres et comment le lire pour obtenir le nombre encodé]</p>
+        </div>
+      </>
+    ),
+  },
 };
 
 // ── Composant ──────────────────────────────────────────────
