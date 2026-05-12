@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.2.0",
+    "baseline-browser-mapping": "^2.10.29",
     "vite": "^5.0.0"
   }
 }

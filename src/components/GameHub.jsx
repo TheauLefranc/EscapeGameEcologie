@@ -2,17 +2,19 @@ import "./GameHub.css";
 
 // ── Définition des documents ───────────────────────────────
 const DOCS = [
-  { id: "mail_source",       icon: "✉",  title: "Mail de la source" },
-  { id: "carte_de_visite",   icon: "📇", title: "Carte de visite" },
-  { id: "papier_trouve",     icon: "📄", title: "Papier trouvé (bureau)" },
-  { id: "audio_pdg",         icon: "🎙", title: "Retranscription audio — PDG" },
-  { id: "audio_secretaire",  icon: "🎙", title: "Retranscription audio — Secrétaire" },
-  { id: "localisation_usine",icon: "📍", title: "Localisation de l'usine" },
-  { id: "street_view",       icon: "🏭", title: "Street View — Usine Frangey 2011" },
-  { id: "discussion_gardien",icon: "💬", title: "Discussion — Gardien d'usine" },
+  { id: "mail_source",        icon: "✉",  title: "Mail de la source" },
+  { id: "carte_de_visite",    icon: "📇", title: "Carte de visite" },
+  { id: "papier_trouve",      icon: "📄", title: "Papier trouvé (bureau)" },
+  { id: "audio_pdg",          icon: "🎙", title: "Retranscription audio — PDG" },
+  { id: "audio_secretaire",   icon: "🎙", title: "Retranscription audio — Secrétaire" },
+  { id: "localisation_usine", icon: "📍", title: "Localisation de l'usine" },
+  { id: "street_view",        icon: "🏭", title: "Street View — Usine Frangey 2011" },
+  { id: "discussion_gardien", icon: "💬", title: "Discussion — Gardien d'usine" },
 ];
 
 // ── Définition des puzzles ─────────────────────────────────
+// result      : la valeur affichée en permanence après résolution
+// resultLabel : l'étiquette décrivant ce résultat
 const PUZZLES = [
   {
     id: "puzzle1",
@@ -20,7 +22,10 @@ const PUZZLES = [
     title: "Trouver l'entreprise",
     desc: "Une source vous a contacté. Analysez le mail et identifiez l'entreprise fraudeuse.",
     needs: [],
-    solutionLabel: "Entreprise identifiée",
+    needsLabel: null,
+    needsExtra: null,
+    result: "Lezinnes",
+    resultLabel: "Siège social",
   },
   {
     id: "puzzle2",
@@ -29,7 +34,9 @@ const PUZZLES = [
     desc: "Un papier trouvé dans le bureau contient un schéma codé. Déchiffrez-le.",
     needs: ["papier_trouve"],
     needsLabel: "Nécessite : Papier trouvé",
-    solutionLabel: "Code 951 obtenu",
+    needsExtra: null,
+    result: "[PLACEHOLDER — Résultat énigme 2]",
+    resultLabel: "Code bâtonnets",
   },
   {
     id: "puzzle3",
@@ -38,7 +45,9 @@ const PUZZLES = [
     desc: "Les retranscriptions audio et le papier recèlent des coordonnées GPS cachées.",
     needs: ["audio_pdg", "audio_secretaire", "papier_trouve"],
     needsLabel: "Nécessite : 2 audios + Papier",
-    solutionLabel: "Coordonnées obtenues",
+    needsExtra: null,
+    result: "[PLACEHOLDER — Coordonnées GPS]",
+    resultLabel: "Coordonnées usine",
   },
   {
     id: "puzzle4",
@@ -46,9 +55,10 @@ const PUZZLES = [
     title: "Entrer dans l'usine",
     desc: "Vous avez localisé l'usine. Trouvez le code d'accès pour clore l'enquête.",
     needs: ["street_view", "discussion_gardien"],
-    needsExtra: "puzzle2",
     needsLabel: "Nécessite : Street View + Gardien + Code 951",
-    solutionLabel: "Code 9512 — Dossier clos",
+    needsExtra: "puzzle2",
+    result: "[PLACEHOLDER — Code d'accès final]",
+    resultLabel: "Code d'accès",
   },
 ];
 
@@ -69,6 +79,7 @@ function puzzleStatus(puzzle, gameState) {
 // ── Composant ──────────────────────────────────────────────
 export default function GameHub({ gameState, onViewDoc, onGoPuzzle, onBack }) {
   const solved = Object.keys(gameState.solvedPuzzles).length;
+  const solvedPuzzles = PUZZLES.filter(p => gameState.solvedPuzzles[p.id]);
 
   return (
     <div className="hub-root">
@@ -80,6 +91,29 @@ export default function GameHub({ gameState, onViewDoc, onGoPuzzle, onBack }) {
         <span className="hub-nav-progress">
           Progression : <strong>{solved} / 4</strong> énigmes résolues
         </span>
+      </div>
+
+      {/* ── Résultats acquis (toujours visible, vide si rien encore) ── */}
+      <div className="hub-results-bar">
+        <div className="hub-results-label">
+          🗂 Résultats acquis
+        </div>
+        <div className="hub-results-chips">
+          {PUZZLES.map(puzzle => {
+            const isSolved = !!gameState.solvedPuzzles[puzzle.id];
+            return (
+              <div
+                key={puzzle.id}
+                className={`result-chip ${isSolved ? "result-chip--solved" : "result-chip--pending"}`}
+              >
+                <span className="result-chip-label">{puzzle.resultLabel}</span>
+                <span className="result-chip-value">
+                  {isSolved ? puzzle.result : "—"}
+                </span>
+              </div>
+            );
+          })}
+        </div>
       </div>
 
       {/* Header */}
@@ -107,8 +141,8 @@ export default function GameHub({ gameState, onViewDoc, onGoPuzzle, onBack }) {
                   <div className="doc-card-top">
                     <span className="doc-card-icon">{status === "locked" ? "🔒" : doc.icon}</span>
                     <span className={`doc-card-badge badge--${status === "viewed" ? "read" : status}`}>
-                      {status === "locked"    ? "Verrouillé"
-                       : status === "viewed"  ? "Lu ✓"
+                      {status === "locked"   ? "Verrouillé"
+                       : status === "viewed" ? "Lu ✓"
                        : "Nouveau"}
                     </span>
                   </div>
@@ -135,7 +169,7 @@ export default function GameHub({ gameState, onViewDoc, onGoPuzzle, onBack }) {
                   <span className="puzzle-card-num">#{puzzle.num}</span>
                   <span className="puzzle-card-title">{puzzle.title}</span>
                   <span className={`puzzle-card-status status--${status}`}>
-                    {status === "solved"    ? "Résolue ✓"
+                    {status === "solved"     ? "Résolue ✓"
                      : status === "available" ? "Disponible"
                      : "🔒 Verrouillée"}
                   </span>
@@ -150,8 +184,9 @@ export default function GameHub({ gameState, onViewDoc, onGoPuzzle, onBack }) {
                 )}
 
                 {status === "solved" && (
-                  <div className="puzzle-card-solution">
-                    ✓ {puzzle.solutionLabel}
+                  <div className="puzzle-card-result">
+                    <span className="puzzle-card-result-lbl">{puzzle.resultLabel}</span>
+                    <span className="puzzle-card-result-val">{puzzle.result}</span>
                   </div>
                 )}
 

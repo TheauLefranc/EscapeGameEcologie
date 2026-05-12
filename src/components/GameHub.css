@@ -51,6 +51,102 @@
   color: #10b981;
 }
 
+/* ── Résultats acquis ── */
+.hub-results-bar {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0.85rem 2rem;
+  background: rgba(16, 185, 129, 0.04);
+  border-bottom: 1px solid rgba(16, 185, 129, 0.12);
+  flex-wrap: wrap;
+}
+
+.hub-results-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #10b981;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.hub-results-chips {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.result-chip {
+  display: flex;
+  flex-direction: column;
+  padding: 0.35rem 0.85rem;
+  border-radius: 8px;
+  min-width: 120px;
+}
+
+.result-chip--solved {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.result-chip--pending {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.result-chip-label {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #475569;
+}
+
+.result-chip--solved .result-chip-label {
+  color: #6ee7b7;
+}
+
+.result-chip-value {
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: monospace;
+  color: #334155;
+  margin-top: 0.1rem;
+}
+
+.result-chip--solved .result-chip-value {
+  color: #f1f5f9;
+}
+
+/* ── Résultat dans la carte puzzle ── */
+.puzzle-card-result {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 8px;
+  padding: 0.5rem 0.9rem;
+  margin-top: 0.2rem;
+}
+
+.puzzle-card-result-lbl {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #6ee7b7;
+}
+
+.puzzle-card-result-val {
+  font-size: 0.92rem;
+  font-weight: 700;
+  font-family: monospace;
+  color: #a7f3d0;
+}
+
 /* ── Header ── */
 .hub-header {
   padding: 2rem 2rem 1rem;

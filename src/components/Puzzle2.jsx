@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./puzzle-shared.css";
 
 // ⚠ À remplacer par la vraie réponse
-const CORRECT_ANSWER = "PLACEHOLDER_CODE_951";
+const CORRECT_ANSWER = "951";
 
 export default function Puzzle2({ gameState, onBack, onSolve }) {
   const [answer, setAnswer] = useState("");
@@ -49,25 +49,16 @@ export default function Puzzle2({ gameState, onBack, onSolve }) {
           <div style={{ marginBottom: "0.5rem", fontSize: "0.75rem", fontWeight: 700, color: "#888", letterSpacing: "0.1em", textTransform: "uppercase" }}>
             Schéma des bâtonnets
           </div>
-          <div className="placeholder-box">
-            <span style={{ fontSize: "1.5rem" }}>📊</span>
-            <span>[PLACEHOLDER — Insérer ici le schéma des bâtonnets]</span>
-          </div>
-
-          {/* Schéma positions */}
-          <div style={{ marginBottom: "0.5rem", marginTop: "1rem", fontSize: "0.75rem", fontWeight: 700, color: "#888", letterSpacing: "0.1em", textTransform: "uppercase" }}>
-            Schéma des positions sur la carte
-          </div>
-          <div className="placeholder-box">
-            <span style={{ fontSize: "1.5rem" }}>🗺</span>
-            <span>[PLACEHOLDER — Insérer ici le schéma des positions]</span>
-          </div>
 
           {/* Note */}
           <div style={{ marginTop: "1.5rem", background: "rgba(0,0,0,0.04)", border: "1px solid rgba(0,0,0,0.08)", borderRadius: "8px", padding: "1rem" }}>
             <div style={{ fontSize: "0.7rem", fontWeight: 700, color: "#888", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "0.5rem" }}>Note manuscrite</div>
             <p style={{ fontSize: "0.9rem", color: "#555", fontStyle: "italic" }}>
-              [PLACEHOLDER — Insérer ici la note manuscrite liée à l'énigme]
+              <img
+                src="/data/Papier_trouve.jpg"
+                alt="Papier trouvé"
+                style={{ maxWidth: "100%", maxHeight: "60vh", borderRadius: "8px", boxShadow: "0 4px 20px rgba(0,0,0,0.15)" }}
+              />
             </p>
           </div>
         </div>
@@ -87,14 +78,6 @@ export default function Puzzle2({ gameState, onBack, onSolve }) {
           <div className="p1-clues-card">
             <div className="p1-card-label">🔎 INDICES</div>
             <ul className="p1-clues-list">
-              <li>
-                <span className="p1-clue-icon">📊</span>
-                [PLACEHOLDER — Indice 1 sur le schéma des bâtonnets]
-              </li>
-              <li>
-                <span className="p1-clue-icon">🗺</span>
-                [PLACEHOLDER — Indice 2 sur les positions]
-              </li>
               <li>
                 <span className="p1-clue-icon">💡</span>
                 <button className="p1-hint-btn" onClick={() => setShowHint(h => !h)}>
