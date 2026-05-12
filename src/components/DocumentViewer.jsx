@@ -163,7 +163,7 @@ const DOC_CONTENT = {
           <div className="dicta-header-right">
             <span className="dicta-meta-chip">12/11/2016</span>
             <span className="dicta-meta-chip">10:26</span>
-            <span className="dicta-meta-chip">52,4 s</span>
+            <span className="dicta-meta-chip">71,7 s</span>
           </div>
         </div>
 
@@ -180,7 +180,7 @@ const DOC_CONTENT = {
           <div className="dicta-progress-track">
             <div className="dicta-progress-fill" style={{ width: "100%" }} />
           </div>
-          <span className="dicta-duration">0:52</span>
+          <span className="dicta-duration">1:11</span>
         </div>
 
         {/* Description */}

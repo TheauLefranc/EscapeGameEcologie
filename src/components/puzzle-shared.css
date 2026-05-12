@@ -371,3 +371,47 @@
   color: #6ee7b7;
   font-family: monospace;
 }
+
+/* ── Transcript list (Puzzle3) ── */
+.tr-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.tr-line {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  align-items: flex-start;
+  border-radius: 4px;
+  transition: background 0.15s;
+}
+.tr-line:hover { background: rgba(255,255,255,0.02); }
+
+.tr-line--highlight {
+  background: rgba(245,158,11,0.08);
+  border-left: 3px solid rgba(245,158,11,0.5);
+  padding-left: 0.6rem;
+  border-bottom-color: rgba(245,158,11,0.12);
+}
+.tr-line--highlight:hover { background: rgba(245,158,11,0.12); }
+
+.tr-speaker {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  min-width: 80px;
+  padding-top: 0.2rem;
+  flex-shrink: 0;
+}
+
+.tr-text {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  line-height: 1.65;
+  margin: 0;
+}
+.tr-line--highlight .tr-text { color: #fde68a; }
