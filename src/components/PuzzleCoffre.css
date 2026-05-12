@@ -1,0 +1,79 @@
+/* ── Coffre doc panel override (scrollable, light) ── */
+.coffre-doc-panel {
+  overflow-y: auto;
+  padding: 1.5rem 2rem;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Map wrapper ── */
+.coffre-map-wrapper {
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.coffre-map-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  font-size: 0.85rem;
+  color: #aaa;
+  font-style: italic;
+}
+
+/* ── ISO table section ── */
+.coffre-iso-section {
+  margin-top: 0.5rem;
+}
+
+.coffre-iso-table-wrap {
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 8px;
+}
+
+.coffre-iso-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+.coffre-iso-table thead {
+  position: sticky;
+  top: 0;
+  background: #f0ede8;
+  z-index: 1;
+}
+
+.coffre-iso-table th {
+  padding: 0.5rem 1rem;
+  text-align: left;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #666;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.coffre-iso-table td {
+  padding: 0.4rem 1rem;
+  color: #333;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.coffre-iso-table tbody tr:hover {
+  background: rgba(0,0,0,0.03);
+}
+
+.coffre-iso-code {
+  font-family: 'Courier New', monospace;
+  font-weight: 700;
+  color: #1a1a2e;
+  letter-spacing: 0.05em;
+}
