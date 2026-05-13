@@ -1,0 +1,471 @@
+/* ═══════════════════════════════════════════════════════
+   game-ui.css — Composants et animations spécifiques
+   au jeu. Importé globalement dans main.jsx.
+═══════════════════════════════════════════════════════ */
+
+/* ══════════════════════════════════════
+   Keyframes globaux
+══════════════════════════════════════ */
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  15%  { transform: translateX(-6px); }
+  30%  { transform: translateX(6px); }
+  45%  { transform: translateX(-4px); }
+  60%  { transform: translateX(4px); }
+  75%  { transform: translateX(-2px); }
+  90%  { transform: translateX(2px); }
+}
+
+@keyframes pulse-danger {
+  0%, 100% { opacity: 1; text-shadow: 0 0 8px var(--danger); }
+  50%       { opacity: 0.75; text-shadow: 0 0 24px var(--danger); }
+}
+
+@keyframes pulse-warning {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.65; }
+}
+
+@keyframes success-flash {
+  0%   { background: rgba(0, 200, 122, 0.35); }
+  100% { background: var(--success-muted); }
+}
+
+@keyframes border-flash-danger {
+  0%, 100% { border-color: var(--danger); }
+  50%       { border-color: rgba(255, 59, 48, 0.3); }
+}
+
+@keyframes reveal-fade {
+  from { opacity: 0.1; filter: blur(6px); }
+  to   { opacity: 1;   filter: blur(0); }
+}
+
+@keyframes scan-reveal {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0% 0 0); }
+}
+
+@keyframes dot-pulse {
+  0%, 100% { transform: scale(1);   opacity: 1; }
+  50%       { transform: scale(1.5); opacity: 0.5; }
+}
+
+@keyframes glitch-before {
+  0%, 92%, 100% { transform: none; opacity: 0; }
+  93% { transform: translateX(-3px); opacity: 0.7; clip-path: inset(20% 0 60% 0); }
+  95% { transform: translateX(3px);  opacity: 0.7; clip-path: inset(70% 0 10% 0); }
+  97% { opacity: 0; }
+}
+
+@keyframes glitch-after {
+  0%, 88%, 100% { transform: none; opacity: 0; }
+  89% { transform: translateX(3px);  opacity: 0.6; clip-path: inset(50% 0 30% 0); }
+  91% { transform: translateX(-3px); opacity: 0.6; clip-path: inset(10% 0 70% 0); }
+  93% { opacity: 0; }
+}
+
+@keyframes cursor-blink {
+  0%, 100% { border-right-color: var(--terminal); }
+  50%       { border-right-color: transparent; }
+}
+
+@keyframes typewriter-reveal {
+  from { max-width: 0; }
+  to   { max-width: 100%; }
+}
+
+/* ══════════════════════════════════════
+   Timer
+══════════════════════════════════════ */
+
+.timer {
+  font-family: var(--font-mono);
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.1em;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 24px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.timer--warning {
+  color: var(--warning);
+  border-color: rgba(255, 170, 0, 0.45);
+  background: rgba(255, 170, 0, 0.06);
+  animation: pulse-warning 1.2s ease-in-out infinite;
+}
+
+.timer--critical {
+  color: var(--danger);
+  border-color: rgba(255, 59, 48, 0.5);
+  background: rgba(255, 59, 48, 0.08);
+  animation: pulse-danger 0.7s ease-in-out infinite;
+}
+
+.timer-colon {
+  opacity: 0.5;
+  margin: 0 -2px;
+}
+
+/* ══════════════════════════════════════
+   Bouton d'action dramatique
+══════════════════════════════════════ */
+
+.btn-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  position: relative;
+  overflow: hidden;
+  transition: color 0.18s;
+}
+
+.btn-action::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  transform: translateX(-101%);
+  transition: transform 0.18s ease;
+  z-index: 0;
+}
+
+.btn-action:hover::before { transform: translateX(0); }
+.btn-action:hover { color: white; }
+.btn-action:active { transform: scale(0.97); }
+
+.btn-action > * { position: relative; z-index: 1; }
+.btn-action > span { position: relative; z-index: 1; }
+
+.btn-action--success {
+  color: var(--success);
+  border-color: var(--success);
+}
+.btn-action--success::before { background: var(--success); }
+.btn-action--success:hover { color: #0f0f13; }
+
+.btn-action--danger {
+  color: var(--danger);
+  border-color: var(--danger);
+}
+.btn-action--danger::before { background: var(--danger); }
+.btn-action--danger:hover { color: white; }
+
+.btn-action--warning {
+  color: var(--warning);
+  border-color: var(--warning);
+}
+.btn-action--warning::before { background: var(--warning); }
+.btn-action--warning:hover { color: #0f0f13; }
+
+/* ══════════════════════════════════════
+   Input terminal (style CLI)
+══════════════════════════════════════ */
+
+.input--terminal {
+  background: #070a0f;
+  border: 1px solid var(--terminal);
+  border-radius: var(--radius-sm);
+  color: var(--terminal);
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  padding: 9px 14px;
+  outline: none;
+  width: 100%;
+  caret-color: var(--terminal);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.input--terminal::placeholder {
+  color: rgba(0, 255, 136, 0.25);
+}
+
+.input--terminal:focus {
+  border-color: var(--terminal);
+  box-shadow: 0 0 0 1px rgba(0, 255, 136, 0.2), inset 0 0 14px rgba(0, 255, 136, 0.04);
+}
+
+/* ══════════════════════════════════════
+   Zone d'énigme interactive
+══════════════════════════════════════ */
+
+.enigme-zone {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  position: relative;
+  transition: border-color 0.2s;
+}
+
+.enigme-zone:focus-within {
+  border-color: var(--border-strong);
+}
+
+.enigme-zone--active {
+  border-color: var(--accent);
+  background: var(--bg-elevated);
+}
+
+.enigme-zone--solved {
+  border-color: var(--success);
+  background: var(--success-muted);
+  animation: success-flash 0.7s ease forwards;
+}
+
+.enigme-zone--wrong {
+  border-color: var(--danger);
+  animation: shake 0.4s ease, border-flash-danger 0.4s ease;
+}
+
+/* ══════════════════════════════════════
+   Boîte d'indice avec révélation
+══════════════════════════════════════ */
+
+.hint-box {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--warning);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hint-box-label {
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--warning);
+  font-family: var(--font-mono);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hint-text {
+  font-size: 0.87rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+.hint-text--locked {
+  filter: blur(5px);
+  user-select: none;
+  transition: filter 0.6s ease;
+  cursor: pointer;
+}
+
+.hint-text--revealed {
+  filter: blur(0);
+  animation: reveal-fade 0.5s ease;
+}
+
+/* ══════════════════════════════════════
+   Glitch text
+══════════════════════════════════════ */
+
+.glitch {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.glitch::before {
+  color: var(--danger);
+  animation: glitch-before 4s infinite;
+}
+
+.glitch::after {
+  color: var(--terminal);
+  animation: glitch-after 4s infinite;
+}
+
+/* ══════════════════════════════════════
+   Status dot avec pulse
+══════════════════════════════════════ */
+
+.status-pulse {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+}
+
+.status-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: var(--border-strong);
+}
+
+.status-pulse--active .status-pulse-dot {
+  background: var(--success);
+  animation: dot-pulse 1.5s ease-in-out infinite;
+}
+.status-pulse--active { color: var(--success); }
+
+.status-pulse--danger .status-pulse-dot {
+  background: var(--danger);
+  animation: dot-pulse 0.55s ease-in-out infinite;
+}
+.status-pulse--danger { color: var(--danger); }
+
+.status-pulse--warning .status-pulse-dot {
+  background: var(--warning);
+  animation: dot-pulse 1s ease-in-out infinite;
+}
+.status-pulse--warning { color: var(--warning); }
+
+/* ══════════════════════════════════════
+   Scanlines — effet CRT subtil
+══════════════════════════════════════ */
+
+.scanlines {
+  position: relative;
+}
+
+.scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.04) 2px,
+    rgba(0, 0, 0, 0.04) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ══════════════════════════════════════
+   Révélation de document
+══════════════════════════════════════ */
+
+.doc-reveal {
+  animation: scan-reveal 0.4s ease forwards;
+}
+
+/* ══════════════════════════════════════
+   Classe utilitaire : shake (mauvaise réponse)
+══════════════════════════════════════ */
+
+.shake {
+  animation: shake 0.4s ease;
+}
+
+/* ══════════════════════════════════════
+   Clignotement curseur terminal
+   Applique via ::after sur un wrapper
+══════════════════════════════════════ */
+
+.cursor-blink::after {
+  content: '█';
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  color: var(--terminal);
+  animation: cursor-blink 0.9s step-end infinite;
+  margin-left: 2px;
+  opacity: 0.85;
+}
+
+/* ══════════════════════════════════════
+   Effet "typewriter" sur un bloc de texte
+   Nécessite width fixe ou max-width connue
+══════════════════════════════════════ */
+
+.typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typewriter-reveal 1.8s steps(40) forwards;
+}
+
+/* ══════════════════════════════════════
+   Badge de difficulté / alerte
+══════════════════════════════════════ */
+
+.game-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid currentColor;
+}
+
+.game-badge--danger  { color: var(--danger);  background: var(--danger-muted); }
+.game-badge--warning { color: var(--warning); background: var(--warning-muted); }
+.game-badge--success { color: var(--success); background: var(--success-muted); }
+.game-badge--terminal {
+  color: var(--terminal);
+  background: rgba(0, 255, 136, 0.07);
+  border-color: rgba(0, 255, 136, 0.4);
+}
+
+/* ══════════════════════════════════════
+   Separator avec texte centré
+══════════════════════════════════════ */
+
+.game-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 16px 0;
+}
+
+.game-divider::before,
+.game-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
