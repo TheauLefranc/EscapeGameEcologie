@@ -1,8 +1,7 @@
 import { useState } from "react";
 import "./puzzle-shared.css";
 
-// ⚠ À remplacer par le vrai code d'accès
-const CORRECT_ANSWER = "PLACEHOLDER_9512";
+const CORRECT_ANSWER = "9512";
 
 export default function Puzzle4({ gameState, onBack, onSolve }) {
   const [section, setSection] = useState("street"); // "street" | "gardien"

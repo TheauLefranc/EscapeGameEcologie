@@ -1,8 +1,12 @@
 import { useState, useReducer } from "react";
 import Puzzle1 from "./Puzzle1";
+import PuzzleCoffre from "./PuzzleCoffre";
 import Puzzle2 from "./Puzzle2";
 import Puzzle3 from "./Puzzle3";
 import Puzzle4 from "./Puzzle4";
+import Puzzle5 from "./Puzzle5";
+import Puzzle6 from "./Puzzle6";
+import Puzzle7 from "./Puzzle7";
 import GameHub from "./GameHub";
 import DocumentViewer from "./DocumentViewer";
 import "./EscapeGame.css";
@@ -25,9 +29,10 @@ function reducer(state, action) {
       const unlockedDocs = [...state.unlockedDocs];
       const add = (id) => { if (!unlockedDocs.includes(id)) unlockedDocs.push(id); };
 
-      if (docId === "mail_source")        add("carte_de_visite");
-      if (docId === "carte_de_visite")    add("papier_trouve");
+      if (docId === "mail_source")        { add("carte_de_visite"); add("carte_europe_quotas"); }
       if (docId === "localisation_usine") { add("street_view"); add("discussion_gardien"); }
+      if (docId === "discussion_gardien") { add("badge"); }
+      if (docId === "badge")              { add("frangey_2014"); add("code_barre_doc"); }
 
       return { ...state, viewedDocs, unlockedDocs };
     }
@@ -38,8 +43,10 @@ function reducer(state, action) {
       const unlockedDocs = [...state.unlockedDocs];
       const add = (id) => { if (!unlockedDocs.includes(id)) unlockedDocs.push(id); };
 
-      if (puzzleId === "puzzle1") { add("audio_pdg"); add("audio_secretaire"); }
-      if (puzzleId === "puzzle3") { add("localisation_usine"); }
+      if (puzzleId === "puzzle1")       { add("audio_pdg"); add("audio_secretaire"); }
+      if (puzzleId === "puzzle_coffre") { add("papier_trouve"); }
+      if (puzzleId === "puzzle3")       { add("localisation_usine"); }
+      if (puzzleId === "puzzle5")       { add("code_barre_doc"); }
 
       return { ...state, solvedPuzzles, unlockedDocs };
     }
@@ -80,12 +87,20 @@ export default function EscapeGame({ onBack }) {
   // ── Puzzles ──
   if (phase === "puzzle1")
     return <Puzzle1 gameState={gameState} onBack={() => setPhase("hub")} onSolve={(ans) => solvePuzzle("puzzle1", ans)} />;
+  if (phase === "puzzle_coffre")
+    return <PuzzleCoffre gameState={gameState} onBack={() => setPhase("hub")} onSolve={(ans) => solvePuzzle("puzzle_coffre", ans)} />;
   if (phase === "puzzle2")
     return <Puzzle2 gameState={gameState} onBack={() => setPhase("hub")} onSolve={(ans) => solvePuzzle("puzzle2", ans)} />;
   if (phase === "puzzle3")
     return <Puzzle3 gameState={gameState} onBack={() => setPhase("hub")} onSolve={(ans) => solvePuzzle("puzzle3", ans)} />;
   if (phase === "puzzle4")
-    return <Puzzle4 gameState={gameState} onBack={() => setPhase("hub")} onSolve={(ans) => { solvePuzzle("puzzle4", ans); setPhase("end"); }} />;
+    return <Puzzle4 gameState={gameState} onBack={() => setPhase("hub")} onSolve={(ans) => solvePuzzle("puzzle4", ans)} />;
+  if (phase === "puzzle5")
+    return <Puzzle5 gameState={gameState} onBack={() => setPhase("hub")} onSolve={(ans) => solvePuzzle("puzzle5", ans)} />;
+  if (phase === "puzzle6")
+    return <Puzzle6 gameState={gameState} onBack={() => setPhase("hub")} onSolve={(ans) => solvePuzzle("puzzle6", ans)} />;
+  if (phase === "puzzle7")
+    return <Puzzle7 gameState={gameState} onBack={() => setPhase("hub")} onSolve={(ans) => { solvePuzzle("puzzle7", ans); setPhase("end"); }} />;
 
   // ── Fin ──
   if (phase === "end") {

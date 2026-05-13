@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./puzzle-shared.css";
 
 // ⚠ À remplacer par les vraies coordonnées attendues
-const CORRECT_ANSWER = "PLACEHOLDER_COORDS";
+const CORRECT_ANSWER = "47°47'15.6\"N 4°04'10.6\"E";
 
 const LINES_PDG = [
   { speaker: "Journaliste", text: "Bon… vous avez gagné.", highlight: false },
@@ -73,7 +73,7 @@ export default function Puzzle3({ gameState, onBack, onSolve }) {
       <div className="p1-nav">
         <button className="p1-nav-back" onClick={onBack}>← Tableau de bord</button>
         <div className="p1-nav-crumb">
-          <span className="p1-nav-step">Énigme 3</span>
+          <span className="p1-nav-step">Énigme 4</span>
           <span className="p1-nav-sep">/</span>
           <span className="p1-nav-title">Enigme des coordonnées</span>
         </div>
@@ -126,16 +126,35 @@ export default function Puzzle3({ gameState, onBack, onSolve }) {
             <div className="p1-card-label">📌 CONTEXTE</div>
             <p>
               Ces deux entretiens ont été enregistrés à l'insu des interlocuteurs.
-              Combinés au papier trouvé dans le bureau, ils permettent de reconstituer
-              des <strong>coordonnées GPS</strong> précises.
+              Combinés, ils permettent de reconstituer des <strong>coordonnées GPS</strong> précises.
             </p>
-            <p>Les lignes surlignées en jaune sont des indices.</p>
+            <p>Les lignes surlignées en jaune sont des indices clés.</p>
           </div>
 
           <div className="p1-clues-card">
             <div className="p1-card-label">🔎 INDICES COLLECTÉS</div>
             <ul className="p1-clues-list">
-              
+              <li>
+                <span className="p1-clue-icon">🎙</span>
+                M. Nort — Initiale&nbsp;<strong style={{color:"#f59e0b"}}>N</strong>&nbsp;·&nbsp;Durée&nbsp;<strong style={{color:"#f59e0b"}}>47,3 s</strong>
+              </li>
+              <li>
+                <span className="p1-clue-icon">📍</span>
+                Une ville : <strong style={{color:"#10b981"}}>Lezinnes</strong> — pointer la mairie&nbsp;
+                <code style={{fontSize:"0.78rem", color:"#94a3b8"}}>47°48'02.9"N 4°38'22.3"E</code>
+              </li>
+              <li>
+                <span className="p1-clue-icon">🎙</span>
+                Estelle — Initiale&nbsp;<strong style={{color:"#c084fc"}}>E</strong>&nbsp;·&nbsp;Durée&nbsp;<strong style={{color:"#c084fc"}}>71,7 s</strong>
+              </li>
+              <li>
+                <span className="p1-clue-icon">💬</span>
+                <em>"…regardez le <strong style={{color:"#fde68a"}}>temps</strong> que vous avez perdu avec M. Nort et avec moi."</em>
+              </li>
+              <li>
+                <span className="p1-clue-icon">💬</span>
+                <em>"Le <strong style={{color:"#fde68a"}}>temps</strong> et l'<strong style={{color:"#fde68a"}}>espace</strong> se relient formant une unité particulière."</em>
+              </li>
               <li>
                 <span className="p1-clue-icon">💡</span>
                 <button className="p1-hint-btn" onClick={() => setShowHint(h => !h)}>
@@ -143,22 +162,7 @@ export default function Puzzle3({ gameState, onBack, onSolve }) {
                 </button>
                 {showHint && (
                   <span className="p1-hint-text">
-                   <li>
-                      <span className="p1-clue-icon">🎙</span>
-                      M. Nort — Initiale&nbsp;<strong style={{color:"#f59e0b"}}>N</strong>&nbsp;·&nbsp;Durée&nbsp;<strong style={{color:"#f59e0b"}}>56,6 s</strong>
-                    </li>
-                    <li>
-                      <span className="p1-clue-icon">🎙</span>
-                      Estelle — Initiale&nbsp;<strong style={{color:"#c084fc"}}>E</strong>&nbsp;·&nbsp;Durée&nbsp;<strong style={{color:"#c084fc"}}>52,4 s</strong>
-                    </li>
-                    <li>
-                      <span className="p1-clue-icon">💬</span>
-                      <em>"…regardez le temps que vous avez perdu avec M. Nort et avec moi."</em>
-                    </li>
-                    <li>
-                      <span className="p1-clue-icon">💬</span>
-                      <em>"Le temps et l'espace se relient formant une unité particulière."</em>
-                    </li>
+                    [PLACEHOLDER — Indice clé reliant les durées (secondes) aux degrés de coordonnées GPS]
                   </span>
                 )}
               </li>

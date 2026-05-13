@@ -1,5 +1,53 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import * as d3 from "d3";
+import EuropeMap from "./EuropeMap";
 import "./DocumentViewer.css";
+
+// ── Sous-composant carte (chargement autonome des données) ──
+function CarteEuropeQuotas() {
+  const [mapData, setMapData] = useState(null);
+  const [maxVal, setMaxVal]   = useState(0);
+
+  useEffect(() => {
+    d3.dsv(";", "/data/ETS.csv").then((rows) => {
+      const filtered = rows.filter(r =>
+        r["Main Activity Code"] === "20-99" &&
+        r["Unit"] === "tonne of CO2 equ." &&
+        r["ETS information"] === "2. Verified emissions" &&
+        r["Country Code"] !== "All Countries" &&
+        parseInt(r.Year) === 2016
+      );
+      const byCountry = {};
+      let max = 0;
+      filtered.forEach(r => {
+        const val = parseFloat(r.Value);
+        byCountry[r["Country"]] = val;
+        if (val > max) max = val;
+      });
+      setMapData(byCountry);
+      setMaxVal(max);
+    });
+  }, []);
+
+  return (
+    <>
+      <div className="dv-title">Carte de l'Europe — Quotas carbone 2016</div>
+      <div className="dv-subtitle">Données EU ETS — Émissions vérifiées par pays participants</div>
+      <div style={{ border: "1px solid rgba(0,0,0,0.1)", borderRadius: "10px", overflow: "hidden", background: "#fff", marginBottom: "1rem" }}>
+        {mapData
+          ? <EuropeMap data={mapData} maxVal={maxVal} />
+          : <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "200px", color: "#aaa", fontStyle: "italic", fontSize: "0.85rem" }}>Chargement…</div>
+        }
+      </div>
+      <div className="dv-body">
+        <p style={{ fontSize: "0.82rem", color: "#555" }}>
+          Les cercles jaunes représentent les émissions vérifiées de CO₂ (en tonnes) par pays participant à l'UE ETS.
+          Plus le cercle est grand, plus les émissions sont élevées.
+        </p>
+      </div>
+    </>
+  );
+}
 
 // ── Contenu de chaque document ─────────────────────────────
 // context : texte affiché dans la pop-up avant d'ouvrir le document
@@ -50,6 +98,13 @@ const DOC_CONTENT = {
         </div>
       </>
     ),
+  },
+
+  carte_europe_quotas: {
+    topbarLabel: "🗺 Document — Carte Europe des quotas carbone",
+    theme: "light",
+    context: null,
+    render: () => <CarteEuropeQuotas />,
   },
 
   papier_trouve: {
@@ -278,6 +333,75 @@ const DOC_CONTENT = {
             <br /><br />
             L'échange doit permettre de déduire le code d'accès à l'usine
           </div>
+        </div>
+      </>
+    ),
+  },
+
+  badge: {
+    topbarLabel: "🪪 Document — Badge site industriel",
+    theme: "dark",
+    context: "En discutant avec le gardien, ce dernier laisse tomber son badge d'accès sans s'en apercevoir. Vous le ramassez discrètement avant qu'il ne s'en rende compte. Ce badge porte plusieurs informations intéressantes.",
+    render: () => (
+      <>
+        <div className="dv-title dv-title--dark">Badge d'accès — Site industriel Frangey</div>
+        <div className="dv-subtitle dv-subtitle--dark">Retrouvé lors de la discussion avec le gardien</div>
+        <div className="dv-placeholder dv-placeholder--dark" style={{ minHeight: "240px" }}>
+          <div className="dv-placeholder-icon">🪪</div>
+          <div className="dv-placeholder-text">
+            [PLACEHOLDER — Insérer ici l'image du badge d'accès avec le code-barres visible]
+          </div>
+        </div>
+        <div className="dv-body dv-body--dark">
+          <p>[PLACEHOLDER — Informations visibles sur le badge : nom de l'installation, numéro, code-barres en bas]</p>
+        </div>
+      </>
+    ),
+  },
+
+  frangey_2014: {
+    topbarLabel: "📸 Document — Photo Frangey 2014",
+    theme: "dark",
+    context: null,
+    render: () => (
+      <>
+        <div className="dv-title dv-title--dark">Photo de l'usine — Frangey, 2014</div>
+        <div className="dv-subtitle dv-subtitle--dark">
+          Photographie de la façade principale — Année 2014
+        </div>
+        <div className="dv-placeholder dv-placeholder--dark" style={{ minHeight: "260px" }}>
+          <div className="dv-placeholder-icon">📸</div>
+          <div className="dv-placeholder-text">
+            [PLACEHOLDER — Insérer ici la photo de l'usine Frangey prise en 2014]
+            <br /><br />
+            Un numéro de salle est visible sur la porte principale
+          </div>
+        </div>
+        <div className="dv-body dv-body--dark">
+          <p>[PLACEHOLDER — Description des éléments visibles sur la photo : numéro de bâtiment, enseignes, détails utiles]</p>
+        </div>
+      </>
+    ),
+  },
+
+  code_barre_doc: {
+    topbarLabel: "█▌ Document — Code-barres badge",
+    theme: "dark",
+    context: "Dans les archives de l'usine, vous retrouvez un document portant le même code-barres que celui du badge. Une loupe posée sur le bureau vous permet d'examiner le code en détail.",
+    render: () => (
+      <>
+        <div className="dv-title dv-title--dark">Code-barres — Badge industriel (agrandissement)</div>
+        <div className="dv-subtitle dv-subtitle--dark">
+          Code-barres EAN-13 — Document récupéré dans les archives
+        </div>
+        <div className="dv-placeholder dv-placeholder--dark" style={{ minHeight: "200px" }}>
+          <div className="dv-placeholder-icon" style={{ fontSize: "2.5rem" }}>█▌█▌███▌█</div>
+          <div className="dv-placeholder-text">
+            [PLACEHOLDER — Insérer ici le code-barres en haute résolution à décoder]
+          </div>
+        </div>
+        <div className="dv-body dv-body--dark">
+          <p>[PLACEHOLDER — Indications sur le type de code-barres et comment le lire pour obtenir le nombre encodé]</p>
         </div>
       </>
     ),

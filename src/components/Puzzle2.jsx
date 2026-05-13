@@ -26,7 +26,7 @@ export default function Puzzle2({ gameState, onBack, onSolve }) {
       <div className="p1-nav">
         <button className="p1-nav-back" onClick={onBack}>← Tableau de bord</button>
         <div className="p1-nav-crumb">
-          <span className="p1-nav-step">Énigme 2</span>
+          <span className="p1-nav-step">Énigme 3</span>
           <span className="p1-nav-sep">/</span>
           <span className="p1-nav-title">Enigme des bâtonnets</span>
         </div>
