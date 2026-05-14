@@ -445,6 +445,99 @@
   background: rgba(0, 255, 136, 0.07);
   border-color: rgba(0, 255, 136, 0.4);
 }
+.game-badge--gold {
+  color: var(--gold);
+  background: var(--gold-muted);
+  border-color: rgba(200, 168, 75, 0.45);
+}
+
+/* ══════════════════════════════════════
+   Document officiel — tampon / sceau
+   Usage : pièces à conviction, rapports EU ETS
+══════════════════════════════════════ */
+
+.doc-stamp {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  border: 2px solid var(--gold);
+  border-radius: var(--radius-sm);
+  padding: 5px 14px;
+  color: var(--gold);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  transform: rotate(-2deg);
+}
+
+.doc-stamp--classified {
+  border-color: var(--danger);
+  color: var(--danger);
+  transform: rotate(-3deg);
+}
+
+.doc-stamp--verified {
+  border-color: var(--success);
+  color: var(--success);
+  transform: rotate(1.5deg);
+}
+
+/* ══════════════════════════════════════
+   Numéro de dossier (style XK-2016-LFG-047)
+══════════════════════════════════════ */
+
+.dossier-id {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  background: var(--gold-muted);
+  border: 1px solid rgba(200, 168, 75, 0.3);
+  border-radius: var(--radius-sm);
+  padding: 2px 8px;
+  display: inline-block;
+}
+
+/* ══════════════════════════════════════
+   Transmission chiffrée (style terminal vert)
+══════════════════════════════════════ */
+
+.transmission {
+  background: #060d08;
+  border: 1px solid rgba(0, 255, 136, 0.25);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--terminal);
+  line-height: 1.8;
+  position: relative;
+}
+
+.transmission::before {
+  content: '▶ TRANSMISSION CHIFFRÉE — OPÉRATION CIMENT NOIR';
+  display: block;
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  color: rgba(0, 255, 136, 0.45);
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgba(0, 255, 136, 0.1);
+  padding-bottom: 8px;
+}
+
+.transmission p { margin-bottom: 8px; }
+.transmission p:last-child { margin-bottom: 0; }
+
+/* Signal chiffré en attente */
+.transmission--encrypted {
+  color: rgba(0, 255, 136, 0.2);
+  filter: blur(3px);
+  user-select: none;
+}
 
 /* ══════════════════════════════════════
    Separator avec texte centré

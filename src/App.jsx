@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import EuropeMap from "./components/EuropeMap";
 import EscapeGame from "./components/EscapeGame";
+import Logo from "./components/Logo";
 import * as d3 from "d3";
 import "./App.css";
 
@@ -61,16 +62,14 @@ function App() {
         <div className="hero-bg-orb hero-bg-orb--blue" />
 
         <nav className="hero-nav">
-          <div className="hero-logo">
-            <span className="hero-logo-icon">🌍</span>
-            <span>EcoMarché</span>
-          </div>
+          <Logo size="nav" />
           <button className="nav-game-btn" onClick={() => setView('game')}>
-            Escape Game →
+            Lancer l'enquête →
           </button>
         </nav>
 
         <div className="hero-content">
+          <Logo size="full" />
           <div className="hero-eyebrow">Données réelles · UE ETS · 2005–2023</div>
 
           <h1 className="hero-title">
