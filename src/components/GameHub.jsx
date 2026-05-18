@@ -1,4 +1,5 @@
 import "./GameHub.css";
+import carbonLogo from "../carbon_unit_logo_v2.svg";
 
 // ── Définition des documents ───────────────────────────────
 const DOCS = [
@@ -139,6 +140,7 @@ export default function GameHub({ gameState, onViewDoc, onGoPuzzle, onBack }) {
         <span className="hub-nav-progress">
           Progression : <strong>{solved} / 8</strong> énigmes résolues
         </span>
+        <img src={carbonLogo} className="hub-corner-logo" alt="Carbon Unit" />
       </div>
 
       {/* ── Résultats acquis (toujours visible, vide si rien encore) ── */}

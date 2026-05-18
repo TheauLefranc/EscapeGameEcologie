@@ -58,6 +58,14 @@
 }
 .hub-nav-progress strong { color: var(--accent); }
 
+.hub-corner-logo {
+  height: 46px;
+  width: auto;
+  opacity: 0.7;
+  filter: drop-shadow(0 0 8px rgba(200, 168, 75, 0.25));
+  flex-shrink: 0;
+}
+
 /* ── Résultats acquis ── */
 .hub-results-bar {
   display: flex;

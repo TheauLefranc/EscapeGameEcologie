@@ -70,6 +70,19 @@
 }
 .nav-game-btn:hover { background: var(--accent-soft); }
 
+/* ── Nav logo ── */
+.nav-logo {
+  height: 38px;
+  width: auto;
+  filter: drop-shadow(0 0 6px rgba(200, 168, 75, 0.2));
+}
+
+/* ── Hero logo badge ── */
+.hero-logo-badge {
+  width: min(320px, 88vw);
+  filter: drop-shadow(0 0 18px rgba(200, 168, 75, 0.3));
+}
+
 /* ── Hero content ── */
 .hero-content {
   flex: 1;
