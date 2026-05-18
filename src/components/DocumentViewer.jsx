@@ -318,7 +318,7 @@ const DOC_CONTENT = {
           <p>Consultez la vue Street View de l'usine telle qu'elle était en 2011 pour observer la façade et ses inscriptions.</p>
           <p style={{ marginTop: "0.75rem" }}>
             <a
-              href="https://www.google.com/maps/@47.787667,4.069611,3a,75y,90t/data=!3m6!1e1!3m4!1s0x0:0x0!2e0!7i13312!8i6656"
+              href="https://www.google.com/maps/@47.787667,4.069611,17z"
               target="_blank"
               rel="noopener noreferrer"
               style={{ color: "#34d399", textDecoration: "underline", fontSize: "0.9rem" }}

@@ -111,46 +111,58 @@ export default function EscapeGame({ onBack }) {
           <button className="eg-back-btn" onClick={onBack}>← Retour à la carte</button>
         </div>
         <div className="eg-intro">
-          <div className="eg-badge">MISSION ACCOMPLIE</div>
-          <h1 className="eg-title">
-            <span className="eg-title-small">Enquête terminée</span>
-            <br />
-            Dossier clos
-          </h1>
-          <div className="eg-divider" />
-          <div className="eg-briefing">
-            <div className="eg-briefing-label">📋 CONCLUSION</div>
-            <p>
-              Nous tenons une info en or ! Depuis 2014 au moins, Lafarge reçoit des quotas
-              importants de la part de l'Union Européenne pour une usine qui n'est même pas
-              en fonctionnement. Cette usine sert à l'entreprise pour collecter un maximum
-              de « droits à polluer » et lui permet de réaliser du bénéfice grâce à la vente
-              de ces quotas.
-            </p>
-            <p>
-              Nous devons absolument en parler dans notre futur reportage, cela fera l'effet
-              d'une bombe !
-            </p>
+          <div className="eg-dossier">
+            <div className="eg-dossier-stripe" />
+            <div className="eg-dossier-header">
+              <span className="eg-dossier-ref">REF. EU-ETS / 2016-11 / FR</span>
+              <span className="eg-dossier-classif">MISSION ACCOMPLIE</span>
+            </div>
+
+            <h1 className="eg-title">
+              <span className="eg-title-small">Enquête terminée</span>
+              Dossier clos
+            </h1>
+
+            <div className="eg-dossier-body">
+              <div className="eg-briefing">
+                <div className="eg-briefing-label">📋 CONCLUSION</div>
+                <p>
+                  Nous tenons une info en or ! Depuis 2014 au moins, Lafarge reçoit des quotas
+                  importants de la part de l'Union Européenne pour une usine qui n'est même pas
+                  en fonctionnement. Cette usine sert à l'entreprise pour collecter un maximum
+                  de « droits à polluer » et lui permet de réaliser du bénéfice grâce à la vente
+                  de ces quotas.
+                </p>
+                <p>
+                  Nous devons absolument en parler dans notre futur reportage, cela fera l'effet
+                  d'une bombe !
+                </p>
+              </div>
+
+              <div className="eg-briefing">
+                <div className="eg-briefing-label">📰 L'HISTOIRE VRAIE</div>
+                <p>
+                  Cette enquête s'inspire d'une affaire réelle. Pour en savoir plus sur la fraude
+                  aux quotas carbone de Lafarge, consultez le reportage de Cash Investigation :
+                </p>
+                <a
+                  href="https://www.franceinfo.fr/environnement/video-cash-investigation-quotas-carbone-un-business-en-beton-pour-lafarge_1459609.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="eg-link"
+                >
+                  Cash Investigation — Quotas carbone : un business en béton pour Lafarge →
+                </a>
+              </div>
+            </div>
+
+            <div className="eg-dossier-footer">
+              <button className="eg-start-btn" onClick={() => { dispatch({ type: "RESET" }); setPhase("intro"); }}>
+                Rejouer depuis le début
+                <span className="eg-arrow">↺</span>
+              </button>
+            </div>
           </div>
-          <div className="eg-briefing" style={{ marginTop: "1rem" }}>
-            <div className="eg-briefing-label">📰 L'HISTOIRE VRAIE</div>
-            <p>
-              Cette enquête s'inspire d'une affaire réelle. Pour en savoir plus sur la fraude
-              aux quotas carbone de Lafarge, consultez le reportage de Cash Investigation :
-            </p>
-            <a
-              href="https://www.franceinfo.fr/environnement/video-cash-investigation-quotas-carbone-un-business-en-beton-pour-lafarge_1459609.html"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="eg-link"
-            >
-              Cash Investigation — Quotas carbone : un business en béton pour Lafarge →
-            </a>
-          </div>
-          <button className="eg-start-btn" onClick={() => { dispatch({ type: "RESET" }); setPhase("intro"); }}>
-            <span>Rejouer depuis le début</span>
-            <span className="eg-arrow">↺</span>
-          </button>
         </div>
       </div>
     );
@@ -176,47 +188,53 @@ export default function EscapeGame({ onBack }) {
       </div>
 
       <div className="eg-intro">
-        <div className="eg-badge">MISSION CONFIDENTIELLE</div>
 
-        <h1 className="eg-title">
-          <span className="eg-title-small">Opération</span>
-          <br />
-          Escape les quotas
-        </h1>
+        <div className="eg-dossier">
+          <div className="eg-dossier-stripe" />
+          <div className="eg-dossier-header">
+            <span className="eg-dossier-ref">REF. EU-ETS / 2016-11 / FR</span>
+            <span className="eg-dossier-classif">MISSION CONFIDENTIELLE</span>
+          </div>
 
-        <div className="eg-divider" />
+          <h1 className="eg-title">
+            <span className="eg-title-small">Opération</span>
+            Escape les quotas
+          </h1>
 
-        <div className="eg-briefing">
-          <div className="eg-briefing-label">📋 BRIEFING</div>
-          <p>
-            Vous êtes journaliste d'investigation. Une source anonyme vient de vous contacter
-            au sujet d'une entreprise française qui aurait fraudé le système de quotas
-            carbone européen (UE ETS).
-          </p>
-          <p>
-            Votre article doit sortir bientôt. Vous avez accès aux données réelles
-            d'émissions européennes. Servez-vous en.
-          </p>
+          <div className="eg-dossier-body">
+            <div className="eg-briefing">
+              <div className="eg-briefing-label">📋 BRIEFING</div>
+              <p>
+                Vous êtes journaliste d'investigation. Une source anonyme vient de vous contacter
+                au sujet d'une entreprise française qui aurait fraudé le système de quotas
+                carbone européen (UE ETS).
+              </p>
+              <p>
+                Votre article doit sortir bientôt. Vous avez accès aux données réelles
+                d'émissions européennes. Servez-vous en.
+              </p>
+            </div>
+
+            <div className="eg-objectives">
+              <div className="eg-obj-title">OBJECTIFS</div>
+              <ul>
+                <li><span className="eg-check">○</span> Lire et analyser le mail de votre source</li>
+                <li><span className="eg-check">○</span> Identifier l'entreprise fraudeuse</li>
+                <li><span className="eg-check">○</span> Localiser l'usine concernée</li>
+                <li><span className="eg-check">○</span> Obtenir le code d'accès et clore le dossier</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="eg-dossier-footer">
+            <button className="eg-start-btn" onClick={() => setPhase("hub")}>
+              Commencer l'enquête
+              <span className="eg-arrow">→</span>
+            </button>
+            <p className="eg-warning">⚠ Ce jeu utilise des données réelles sur les émissions européennes</p>
+          </div>
         </div>
 
-        <div className="eg-objectives">
-          <div className="eg-obj-title">OBJECTIFS</div>
-          <ul>
-            <li><span className="eg-check">○</span> Lire et analyser le mail de votre source</li>
-            <li><span className="eg-check">○</span> Identifier l'entreprise fraudeuse</li>
-            <li><span className="eg-check">○</span> Localiser l'usine concernée</li>
-            <li><span className="eg-check">○</span> Obtenir le code d'accès et clore le dossier</li>
-          </ul>
-        </div>
-
-        <button className="eg-start-btn" onClick={() => setPhase("hub")}>
-          <span>Commencer l'enquête</span>
-          <span className="eg-arrow">→</span>
-        </button>
-
-        <p className="eg-warning">
-          ⚠ Ce jeu utilise des données réelles sur les émissions européennes
-        </p>
       </div>
     </div>
   );

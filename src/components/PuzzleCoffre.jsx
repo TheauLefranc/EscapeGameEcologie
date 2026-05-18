@@ -4,7 +4,7 @@ import EuropeMap from "./EuropeMap";
 import "./puzzle-shared.css";
 import "./PuzzleCoffre.css";
 
-const CORRECT_ANSWER = "161";
+const CORRECT_ANSWER = "250";
 
 const ISO_TABLE = [
   { pays: "Allemagne",       code: "276" },

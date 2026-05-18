@@ -68,52 +68,71 @@ function App() {
           </button>
         </nav>
 
-        <div className="hero-content">
-          <img src={carbonLogo} className="hero-logo-badge" alt="Carbon Unit — Division Quotas" />
-          <div className="hero-eyebrow">Données réelles · UE ETS · 2005–2023</div>
+        <div className="hero-inner">
+          <div className="hero-left">
+            <div className="hero-eyebrow">Données réelles · UE ETS · 2005–2023</div>
 
-          <h1 className="hero-title">
-            Le marché des<br />
-            <span className="hero-accent">crédits carbone</span><br />
-            en Europe
-          </h1>
+            <h1 className="hero-title">
+              Le marché des<br />
+              <span className="hero-accent">crédits carbone</span><br />
+              en Europe
+            </h1>
 
-          <p className="hero-sub">
-            Explorez 18 ans d'émissions CO₂ vérifiées à travers l'Europe,
-            puis plongez dans un escape game pour comprendre les enjeux
-            du marché carbone européen.
-          </p>
+            <p className="hero-sub">
+              Explorez 18 ans d'émissions CO₂ vérifiées à travers l'Europe,
+              puis plongez dans un escape game pour comprendre les enjeux
+              du marché carbone européen.
+            </p>
 
-          <div className="hero-ctas">
-            <button className="cta-primary" onClick={() => setView('game')}>
-              <span className="cta-icon">🎮</span>
-              Lancer l'Escape Game
-            </button>
-            <button className="cta-secondary" onClick={scrollToMap}>
-              <span className="cta-icon">🗺️</span>
-              Explorer la carte
-            </button>
+            <div className="hero-ctas">
+              <button className="cta-primary" onClick={() => setView('game')}>
+                Lancer l'Escape Game →
+              </button>
+              <button className="cta-secondary" onClick={scrollToMap}>
+                Explorer la carte
+              </button>
+            </div>
+
+            <div className="hero-stats">
+              <div className="hero-stat">
+                <div className="hero-stat-value">30+</div>
+                <div className="hero-stat-label">pays participants</div>
+              </div>
+              <div className="hero-stat-sep" />
+              <div className="hero-stat">
+                <div className="hero-stat-value">2005</div>
+                <div className="hero-stat-label">création de l'UE ETS</div>
+              </div>
+              <div className="hero-stat-sep" />
+              <div className="hero-stat">
+                <div className="hero-stat-value">18 ans</div>
+                <div className="hero-stat-label">de données</div>
+              </div>
+            </div>
           </div>
 
-          <div className="hero-stats">
-            <div className="hero-stat">
-              <div className="hero-stat-value">30+</div>
-              <div className="hero-stat-label">pays participants</div>
+          <div className="hero-deco" aria-hidden="true">
+            <div className="deco-tag">DOSSIER #EU-ETS-2016</div>
+            <div className="deco-lines">
+              <div className="deco-line deco-line--full" />
+              <div className="deco-line deco-line--3q" />
+              <div className="deco-line deco-line--half" />
+              <div className="deco-line deco-line--full" />
+              <div className="deco-line deco-line--redacted" />
+              <div className="deco-line deco-line--2q" />
+              <div className="deco-line deco-line--full" />
+              <div className="deco-line deco-line--3q" />
+              <div className="deco-line deco-line--redacted" />
+              <div className="deco-line deco-line--full" />
+              <div className="deco-line deco-line--half" />
+              <div className="deco-line deco-line--full" />
             </div>
-            <div className="hero-stat-sep" />
-            <div className="hero-stat">
-              <div className="hero-stat-value">2005</div>
-              <div className="hero-stat-label">création de l'UE ETS</div>
-            </div>
-            <div className="hero-stat-sep" />
-            <div className="hero-stat">
-              <div className="hero-stat-value">18 ans</div>
-              <div className="hero-stat-label">de données</div>
-            </div>
+            <div className="deco-stamp">CONFIDENTIEL</div>
+            <img src={carbonLogo} className="deco-logo" alt="" />
           </div>
         </div>
 
-        <div className="hero-scroll-hint" onClick={scrollToMap}>
+        <div className="hero-scroll-hint" onClick={scrollToMap} style={{ alignSelf: 'center' }}>
           <span>Voir la carte</span>
           <span className="hero-scroll-arrow">↓</span>
         </div>

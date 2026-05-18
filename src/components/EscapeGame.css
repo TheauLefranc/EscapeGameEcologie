@@ -58,53 +58,100 @@
 /* ── Intro screen ── */
 
 .eg-intro {
-  max-width: 640px;
-  width: 100%;
-  padding: 48px 20px 64px;
+  flex: 1;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  text-align: center;
-  gap: 24px;
+  justify-content: center;
+  padding: 40px 20px;
+  width: 100%;
 }
 
-.eg-badge {
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  color: var(--accent-soft);
-  border: 1px solid var(--accent);
-  padding: 4px 12px;
-  border-radius: var(--radius-sm);
-  background: var(--accent-muted);
-  text-transform: uppercase;
+.eg-dossier {
+  width: 100%;
+  max-width: 600px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.eg-dossier-stripe {
+  height: 4px;
+  background: var(--accent);
+  width: 100%;
+}
+
+.eg-dossier-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-elevated);
+}
+
+.eg-dossier-ref {
   font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.eg-dossier-classif {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  text-transform: uppercase;
+  border: 1px solid var(--accent);
+  padding: 2px 8px;
+  border-radius: 2px;
+}
+
+.eg-dossier-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.eg-dossier-footer {
+  padding: 20px 24px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  background: var(--bg-elevated);
 }
 
 .eg-title {
-  font-size: clamp(2rem, 6vw, 3.2rem);
-  font-weight: 800;
-  line-height: 1.1;
+  font-family: 'Bebas Neue', 'Oswald', sans-serif;
+  font-size: clamp(2.8rem, 7vw, 4rem);
+  font-weight: 400;
+  line-height: 0.95;
   color: var(--text-primary);
+  letter-spacing: 0.02em;
+  padding: 20px 24px 0;
   margin: 0;
 }
 
 .eg-title-small {
-  font-size: 0.4em;
-  font-weight: 600;
-  letter-spacing: 0.16em;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
   color: var(--text-muted);
   text-transform: uppercase;
   display: block;
   margin-bottom: 4px;
 }
 
-.eg-divider {
-  width: 48px;
-  height: 3px;
-  background: var(--accent);
-  border-radius: 2px;
-}
+.eg-divider { display: none; }
 
 .eg-briefing {
   background: var(--bg-surface);
