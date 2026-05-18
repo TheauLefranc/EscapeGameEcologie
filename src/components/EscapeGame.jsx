@@ -1,4 +1,4 @@
-import { useState, useReducer } from "react";
+import { useState, useReducer, useEffect, useRef } from "react";
 import Puzzle1 from "./Puzzle1";
 import PuzzleCoffre from "./PuzzleCoffre";
 import Puzzle2 from "./Puzzle2";
@@ -60,10 +60,63 @@ function reducer(state, action) {
   }
 }
 
+// ── Séquence démo (ordre respectant les dépendances) ───────
+const DEMO_STEPS = [
+  { type: "VIEW_DOC",     docId:    "mail_source" },
+  { type: "VIEW_DOC",     docId:    "carte_de_visite" },
+  { type: "VIEW_DOC",     docId:    "carte_europe_quotas" },
+  { type: "SOLVE_PUZZLE", puzzleId: "puzzle_coffre", answer: "250" },
+  { type: "VIEW_DOC",     docId:    "papier_trouve" },
+  { type: "SOLVE_PUZZLE", puzzleId: "puzzle1",       answer: "lafarge" },
+  { type: "VIEW_DOC",     docId:    "audio_pdg" },
+  { type: "VIEW_DOC",     docId:    "audio_secretaire" },
+  { type: "SOLVE_PUZZLE", puzzleId: "puzzle2",       answer: "951" },
+  { type: "SOLVE_PUZZLE", puzzleId: "puzzle3",       answer: "47°47'15.6\"N 4°04'10.6\"E" },
+  { type: "VIEW_DOC",     docId:    "localisation_usine" },
+  { type: "VIEW_DOC",     docId:    "street_view" },
+  { type: "VIEW_DOC",     docId:    "discussion_gardien" },
+  { type: "VIEW_DOC",     docId:    "badge" },
+  { type: "SOLVE_PUZZLE", puzzleId: "puzzle4",       answer: "9512" },
+  { type: "VIEW_DOC",     docId:    "audio_employe" },
+  { type: "SOLVE_PUZZLE", puzzleId: "puzzle5",       answer: "3512" },
+  { type: "VIEW_DOC",     docId:    "frangey_2014" },
+  { type: "VIEW_DOC",     docId:    "code_barre_doc" },
+  { type: "SOLVE_PUZZLE", puzzleId: "puzzle6",       answer: "184210" },
+  { type: "SOLVE_PUZZLE", puzzleId: "puzzle7",       answer: "142000" },
+];
+
+const DEMO_LABELS = {
+  mail_source:        "Lecture du mail de la source…",
+  carte_de_visite:    "Examen de la carte de visite…",
+  carte_europe_quotas:"Analyse de la carte des quotas…",
+  puzzle_coffre:      "Résolution du coffre (code ISO France)…",
+  papier_trouve:      "Lecture du papier trouvé…",
+  puzzle1:            "Identification de l'entreprise : Lafarge",
+  audio_pdg:          "Écoute de l'audio — M. Nort…",
+  audio_secretaire:   "Écoute de l'audio — Estelle…",
+  puzzle2:            "Déchiffrage des bâtonnets : 951",
+  puzzle3:            "Calcul des coordonnées GPS…",
+  localisation_usine: "Localisation de l'usine…",
+  street_view:        "Observation de la façade (Street View)…",
+  discussion_gardien: "Discussion avec le gardien…",
+  badge:              "Récupération du badge…",
+  puzzle4:            "Entrée dans l'usine : code 9512",
+  audio_employe:      "Discussion avec l'employé…",
+  puzzle5:            "Code des archives : 3512",
+  frangey_2014:       "Photo Frangey 2014…",
+  code_barre_doc:     "Lecture du code-barres…",
+  puzzle6:            "Décodage du code-barres : 184 210",
+  puzzle7:            "Calcul du surplus frauduleux : 142 000",
+};
+
 // ── Composant principal ────────────────────────────────────
 export default function EscapeGame({ onBack }) {
   const [phase, setPhase] = useState("intro");
   const [gameState, dispatch] = useReducer(reducer, INITIAL_STATE);
+  const [demoStep,   setDemoStep]   = useState(null);  // null = pas en démo
+  const [demoPaused, setDemoPaused] = useState(false);
+  const [endFromDemo, setEndFromDemo] = useState(false);
+  const demoRef = useRef(null);
 
   const viewDoc = (docId) => {
     dispatch({ type: "VIEW_DOC", docId });
@@ -74,6 +127,46 @@ export default function EscapeGame({ onBack }) {
     dispatch({ type: "SOLVE_PUZZLE", puzzleId, answer });
     setPhase("hub");
   };
+
+  const startDemo = () => {
+    dispatch({ type: "RESET" });
+    setDemoStep(0);
+    setDemoPaused(false);
+    setEndFromDemo(false);
+    setPhase("hub");
+  };
+
+  const stopDemo = () => {
+    if (demoRef.current) clearTimeout(demoRef.current);
+    setDemoStep(null);
+    setDemoPaused(false);
+  };
+
+  const pauseDemo = () => {
+    if (demoRef.current) clearTimeout(demoRef.current);
+    setDemoPaused(true);
+  };
+
+  const resumeDemo = () => {
+    setDemoPaused(false);
+  };
+
+  useEffect(() => {
+    if (demoStep === null || demoPaused) return;
+    if (demoStep >= DEMO_STEPS.length) {
+      setDemoStep(null);
+      setEndFromDemo(true);
+      setPhase("end");
+      return;
+    }
+    const step = DEMO_STEPS[demoStep];
+    demoRef.current = setTimeout(() => {
+      if (step.type === "VIEW_DOC")     dispatch({ type: "VIEW_DOC",     docId:    step.docId });
+      if (step.type === "SOLVE_PUZZLE") dispatch({ type: "SOLVE_PUZZLE", puzzleId: step.puzzleId, answer: step.answer });
+      setDemoStep(s => s + 1);
+    }, 900);
+    return () => clearTimeout(demoRef.current);
+  }, [demoStep, demoPaused]);
 
   // ── Document viewer ──
   if (phase.startsWith("doc:")) {
@@ -157,9 +250,17 @@ export default function EscapeGame({ onBack }) {
             </div>
 
             <div className="eg-dossier-footer">
-              <button className="eg-start-btn" onClick={() => { dispatch({ type: "RESET" }); setPhase("intro"); }}>
-                Rejouer depuis le début
-                <span className="eg-arrow">↺</span>
+              {endFromDemo && (
+                <button className="eg-start-btn" onClick={() => { setEndFromDemo(false); setPhase("hub"); }}>
+                  Retour au tableau de bord
+                  <span className="eg-arrow">→</span>
+                </button>
+              )}
+              <button
+                className={endFromDemo ? "eg-demo-btn" : "eg-start-btn"}
+                onClick={() => { dispatch({ type: "RESET" }); setEndFromDemo(false); setPhase("intro"); }}
+              >
+                {endFromDemo ? "↺ Rejouer depuis le début" : <>Rejouer depuis le début <span className="eg-arrow">↺</span></>}
               </button>
             </div>
           </div>
@@ -170,13 +271,37 @@ export default function EscapeGame({ onBack }) {
 
   // ── Hub ──
   if (phase === "hub") {
+    const currentLabel = demoStep !== null && demoStep < DEMO_STEPS.length
+      ? DEMO_LABELS[DEMO_STEPS[demoStep].docId || DEMO_STEPS[demoStep].puzzleId]
+      : null;
     return (
-      <GameHub
-        gameState={gameState}
-        onViewDoc={viewDoc}
-        onGoPuzzle={(id) => setPhase(id)}
-        onBack={onBack}
-      />
+      <>
+        {demoStep !== null && (
+          <div className="demo-banner">
+            <span className={`demo-banner-dot ${demoPaused ? "demo-banner-dot--paused" : ""}`} />
+            <span className="demo-banner-label">
+              {demoPaused ? "⏸ En pause" : (currentLabel ?? "Finalisation…")}
+            </span>
+            <div className="demo-banner-bar">
+              <div
+                className="demo-banner-fill"
+                style={{ width: `${Math.round((demoStep / DEMO_STEPS.length) * 100)}%` }}
+              />
+            </div>
+            {demoPaused
+              ? <button className="demo-banner-pause" onClick={resumeDemo}>▶ Reprendre</button>
+              : <button className="demo-banner-pause" onClick={pauseDemo}>⏸ Pause</button>
+            }
+            <button className="demo-banner-stop" onClick={stopDemo}>✕ Arrêter</button>
+          </div>
+        )}
+        <GameHub
+          gameState={gameState}
+          onViewDoc={viewDoc}
+          onGoPuzzle={(id) => setPhase(id)}
+          onBack={onBack}
+        />
+      </>
     );
   }
 
@@ -230,6 +355,9 @@ export default function EscapeGame({ onBack }) {
             <button className="eg-start-btn" onClick={() => setPhase("hub")}>
               Commencer l'enquête
               <span className="eg-arrow">→</span>
+            </button>
+            <button className="eg-demo-btn" onClick={startDemo}>
+              ▶ Mode démo — parcours automatique
             </button>
             <p className="eg-warning">⚠ Ce jeu utilise des données réelles sur les émissions européennes</p>
           </div>

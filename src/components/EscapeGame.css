@@ -266,8 +266,98 @@
 .eg-warning {
   font-size: 0.7rem;
   color: var(--text-muted);
-  margin-top: -12px;
   font-family: var(--font-mono);
+}
+
+.eg-demo-btn {
+  background: transparent;
+  border: 1px solid var(--border-strong);
+  color: var(--text-muted);
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+.eg-demo-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent-soft);
+}
+
+/* ── Bannière démo ── */
+.demo-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: #0f0f13;
+  border-bottom: 2px solid var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px;
+  height: 38px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+}
+
+.demo-banner-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  animation: demo-pulse 1s infinite;
+}
+
+@keyframes demo-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+.demo-banner-label {
+  color: var(--text-secondary);
+  flex-shrink: 0;
+  min-width: 280px;
+}
+
+.demo-banner-bar {
+  flex: 1;
+  height: 3px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.demo-banner-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+
+.demo-banner-pause,
+.demo-banner-stop {
+  background: transparent;
+  border: 1px solid var(--border-strong);
+  color: var(--text-muted);
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: border-color 0.15s, color 0.15s;
+}
+.demo-banner-pause:hover { border-color: var(--accent); color: var(--accent-soft); }
+.demo-banner-stop:hover  { border-color: var(--danger); color: var(--danger); }
+
+.demo-banner-dot--paused {
+  background: var(--warning);
+  animation: none;
 }
 
 /* ── Chapter screen ── */
