@@ -46,21 +46,13 @@ export default function Puzzle6({ gameState, onBack, onSolve }) {
             <div style={{ fontSize: "0.7rem", fontWeight: 700, color: "#888", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "0.75rem" }}>
               Code-barres — Badge industriel
             </div>
-            <div className="placeholder-box placeholder-box--dark" style={{ minHeight: "180px" }}>
-              <span style={{ fontSize: "2rem" }}>█▌█▌███▌█</span>
-              <span>[PLACEHOLDER — Insérer ici l'image du code-barres à décoder]</span>
-            </div>
+            <img
+              src="/data/code_barre.png"
+              alt="Code-barres — Badge industriel"
+              style={{ width: "100%", maxWidth: "360px", display: "block", margin: "0 auto", imageRendering: "pixelated" }}
+            />
           </div>
 
-          <div style={{ background: "rgba(0,0,0,0.04)", border: "1px solid rgba(0,0,0,0.08)", borderRadius: "8px", padding: "1rem" }}>
-            <div style={{ fontSize: "0.7rem", fontWeight: 700, color: "#888", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "0.5rem" }}>
-              Photo Frangey 2014 — Détail
-            </div>
-            <div className="placeholder-box placeholder-box--dark" style={{ minHeight: "140px" }}>
-              <span style={{ fontSize: "1.5rem" }}>📸</span>
-              <span>[PLACEHOLDER — Insérer ici le détail de la photo Frangey 2014 montrant le badge]</span>
-            </div>
-          </div>
         </div>
 
         {/* ── Panneau droit ── */}
@@ -88,7 +80,7 @@ export default function Puzzle6({ gameState, onBack, onSolve }) {
               </li>
               <li>
                 <span className="p1-clue-icon">📊</span>
-                [PLACEHOLDER — Indice sur la méthode de lecture du code-barres]
+                Scannez le code-barres avec l'<strong>appareil photo de votre téléphone</strong> ou une application dédiée. Les 13 chiffres affichés sous le code sont la réponse (sans le premier chiffre de vérification).
               </li>
               <li>
                 <span className="p1-clue-icon">💡</span>
@@ -97,7 +89,7 @@ export default function Puzzle6({ gameState, onBack, onSolve }) {
                 </button>
                 {showHint && (
                   <span className="p1-hint-text">
-                    [PLACEHOLDER — Indice supplémentaire pour identifier le nombre encodé dans le code-barres]
+                    Le nombre encodé est à 6 chiffres. Cherchez les 6 chiffres centraux du code-barres EAN-13 (chiffres 2 à 7).
                   </span>
                 )}
               </li>

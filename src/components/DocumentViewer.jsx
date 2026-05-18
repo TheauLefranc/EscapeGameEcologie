@@ -282,14 +282,23 @@ const DOC_CONTENT = {
         <div className="dv-subtitle dv-subtitle--dark">
           Coordonnées : 47°4706.1"N 4°04'22.4"E — Frangey, France
         </div>
-        <div className="dv-placeholder dv-placeholder--dark">
-          <div className="dv-placeholder-icon">📍</div>
-          <div className="dv-placeholder-text">
-            [PLACEHOLDER — Insérer ici la carte de localisation de l'usine]
-          </div>
-        </div>
-        <div className="dv-body dv-body--dark">
-          <p>[PLACEHOLDER — Description de l'adresse et accès à Google Street View]</p>
+        <div className="dv-body dv-body--dark" style={{ marginTop: "1rem" }}>
+          <p><strong>Adresse :</strong> Frangey, commune de Frangey, Yonne (89), France</p>
+          <p><strong>Coordonnées GPS :</strong> 47°47'15.6"N 4°04'10.6"E</p>
+          <p style={{ marginTop: "0.5rem" }}>
+            <a
+              href={`https://www.google.com/maps/@47.787667,4.069611,17z`}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "#34d399", textDecoration: "underline", fontSize: "0.9rem" }}
+            >
+              Voir sur Google Maps →
+            </a>
+          </p>
+          <p style={{ marginTop: "0.75rem", fontSize: "0.88rem", color: "#94a3b8" }}>
+            L'usine est accessible depuis la D905, à environ 10 km au nord-ouest de Tonnerre.
+            Une capture Street View de la façade est disponible dans les documents.
+          </p>
         </div>
       </>
     ),
@@ -305,14 +314,18 @@ const DOC_CONTENT = {
         <div className="dv-subtitle dv-subtitle--dark">
           Capture Street View Google — Année 2011
         </div>
-        <div className="dv-placeholder dv-placeholder--dark" style={{ minHeight: "260px" }}>
-          <div className="dv-placeholder-icon">🏭</div>
-          <div className="dv-placeholder-text">
-            [PLACEHOLDER — Insérer ici la capture Street View de l'usine de Frangey en 2011]
-          </div>
-        </div>
-        <div className="dv-body dv-body--dark">
-          <p>[PLACEHOLDER — Observations à noter sur la photo (bâtiment, enseignes, éléments visuels utiles)]</p>
+        <div className="dv-body dv-body--dark" style={{ marginTop: "1rem" }}>
+          <p>Consultez la vue Street View de l'usine telle qu'elle était en 2011 pour observer la façade et ses inscriptions.</p>
+          <p style={{ marginTop: "0.75rem" }}>
+            <a
+              href="https://www.google.com/maps/@47.787667,4.069611,3a,75y,90t/data=!3m6!1e1!3m4!1s0x0:0x0!2e0!7i13312!8i6656"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "#34d399", textDecoration: "underline", fontSize: "0.9rem" }}
+            >
+              Voir la Street View de l'usine Frangey →
+            </a>
+          </p>
         </div>
       </>
     ),
@@ -321,20 +334,65 @@ const DOC_CONTENT = {
   discussion_gardien: {
     topbarLabel: "💬 Document — Discussion avec le gardien",
     theme: "dark",
-    context: null,
+    context: "En arrivant à l'entrée de l'usine, je remarque le gardien à l'entrée, somnolant devant son ordinateur. Plusieurs caméras sont visibles depuis l'entrée du bâtiment: l'endroit a l'air bien surveillé. Il va sûrement falloir que j'utilise mon identité de couverture. Par chance, j'ai pris ma fausse carte d'identité dans mon sac. Soudain, le gardien se met à me parler:",
     render: () => (
-      <>
-        <div className="dv-title dv-title--dark">Discussion avec le gardien d'usine</div>
-        <div className="dv-subtitle dv-subtitle--dark">Dialogue retranscrit — Source : Flaurient</div>
-        <div className="dv-placeholder dv-placeholder--dark">
-          <div className="dv-placeholder-icon">💬</div>
-          <div className="dv-placeholder-text">
-            [PLACEHOLDER — Insérer ici le dialogue avec le gardien]
-            <br /><br />
-            L'échange doit permettre de déduire le code d'accès à l'usine
+      <div className="dicta-root">
+
+        {/* En-tête dictaphone */}
+        <div className="dicta-header">
+          <div className="dicta-header-left">
+            <span className="dicta-rec-dot" />
+            <span className="dicta-rec-label">REC</span>
+            <span className="dicta-id">ENREGISTREMENT #003</span>
+          </div>
+          <div className="dicta-header-right">
+            <span className="dicta-meta-chip">19/11/2016</span>
+            <span className="dicta-meta-chip">10:36</span>
+            <span className="dicta-meta-chip">1m36s</span>
           </div>
         </div>
-      </>
+
+        {/* Fausse forme d'onde */}
+        <div className="dicta-waveform">
+          {[4,7,3,10,6,9,4,12,5,8,3,11,7,4,9,6,13,5,8,3,10,7,4,11,6,9,3,8,5,12,4,7,10,3,9,6,11,4,8,5,7,3,10,6,9].map((h, i) => (
+            <div key={i} className="dicta-wave-bar" style={{ height: `${h}px` }} />
+          ))}
+        </div>
+
+        {/* Faux contrôles */}
+        <div className="dicta-controls">
+          <button className="dicta-play-btn" tabIndex={-1}>▶</button>
+          <div className="dicta-progress-track">
+            <div className="dicta-progress-fill" style={{ width: "100%" }} />
+          </div>
+          <span className="dicta-duration">1:36</span>
+        </div>
+
+        {/* Description */}
+        <div className="dicta-desc">
+          Retranscription audio de la conversation en caméra cachée avec le gardien de l'usine de Frangey.
+        </div>
+
+        {/* Transcript */}
+        <div className="dicta-transcript">
+          {[
+            { speaker: "gardien",      text: "Bonjour, vous êtes extérieur ?" },
+            { speaker: "journaliste",  text: "Non, en fait c'est mon premier jour, lui répondis-je." },
+            { speaker: "gardien",      text: "Votre premier jour ! Soit vous mentez, soit vous êtes encore un de nos supérieurs descendus de Paris qui viennent faire un tour dans la région pour \"contrôler que l'usine fonctionne correctement\"." },
+            { speaker: "journaliste",  text: "En fait, je viens du siège social d'Issy Les Moulineaux. Comme vous le dites, on m'y a envoyé pour un contrôle." },
+            { speaker: "gardien",      text: "D'accord, enregistrez vous sur ce carnet et vous pourrez passer. Vous aurez aussi besoin de ceci." },
+            { speaker: "journaliste",  text: "J'ouvre la grille avec ce badge ?" },
+            { speaker: "gardien",      text: "Non, ce badge vous sert à accéder à toutes les zones gardées par mes collègues sans qu'ils aient besoin de m'appeler pour vérifier votre identité. D'ailleurs, le code barre ne fonctionne nulle part ! C'est à ce portail, celui qui est derrière vous, qu'il vous faudra entrer le code que le PDG vous a donné. Vu que beaucoup de personnes ont ce code et que le PDG ne veut pas le changer, on a ajouté une sécurité en plus du code en déplaçant des lettres sur la devanture de l'usine." },
+          ].map((line, i) => (
+            <div key={i} className={`dicta-line dicta-line--${line.speaker}`}>
+              <span className="dicta-speaker">
+                {line.speaker === "journaliste" ? "Journaliste" : "Gardien"}
+              </span>
+              <p className="dicta-text">{line.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     ),
   },
 
@@ -346,16 +404,84 @@ const DOC_CONTENT = {
       <>
         <div className="dv-title dv-title--dark">Badge d'accès — Site industriel Frangey</div>
         <div className="dv-subtitle dv-subtitle--dark">Retrouvé lors de la discussion avec le gardien</div>
-        <div className="dv-placeholder dv-placeholder--dark" style={{ minHeight: "240px" }}>
-          <div className="dv-placeholder-icon">🪪</div>
-          <div className="dv-placeholder-text">
-            [PLACEHOLDER — Insérer ici l'image du badge d'accès avec le code-barres visible]
-          </div>
-        </div>
-        <div className="dv-body dv-body--dark">
-          <p>[PLACEHOLDER — Informations visibles sur le badge : nom de l'installation, numéro, code-barres en bas]</p>
+        <div style={{ textAlign: "center", padding: "1.5rem 0" }}>
+          <img
+            src="/data/code_barre.png"
+            alt="Code-barres — Badge industriel"
+            style={{ width: "100%", maxWidth: "420px", display: "inline-block", imageRendering: "pixelated" }}
+          />
         </div>
       </>
+    ),
+  },
+
+  audio_employe: {
+    topbarLabel: "🎙 Document — Retranscription audio",
+    theme: "dark",
+    context: "C'est le bon code ! Je peux enfin rentrer dans l'usine.\n\nToujours muni de mon fidèle micro caché, je commence à m'aventurer dans l'usine en quête de plus d'indices concernant notre affaire.\n\nEn commençant à me balader dans les environs, je remarque que l'endroit me paraît désert pour une usine en fonctionnement, bizarre…\n\nPar chance, je rencontre un employé dans les environs.",
+    render: () => (
+      <div className="dicta-root">
+
+        {/* En-tête dictaphone */}
+        <div className="dicta-header">
+          <div className="dicta-header-left">
+            <span className="dicta-rec-dot" />
+            <span className="dicta-rec-label">REC</span>
+            <span className="dicta-id">ENREGISTREMENT #004</span>
+          </div>
+          <div className="dicta-header-right">
+            <span className="dicta-meta-chip">19/11/2016</span>
+            <span className="dicta-meta-chip">11:14</span>
+            <span className="dicta-meta-chip">48,6 s</span>
+          </div>
+        </div>
+
+        {/* Fausse forme d'onde */}
+        <div className="dicta-waveform">
+          {[6,3,9,5,11,4,8,6,3,10,7,4,12,5,8,3,9,6,11,4,7,10,3,8,5,12,4,9,6,3,11,7,4,10,5,8,3,9,6,12,4,7,10,3,8].map((h, i) => (
+            <div key={i} className="dicta-wave-bar" style={{ height: `${h}px` }} />
+          ))}
+        </div>
+
+        {/* Faux contrôles */}
+        <div className="dicta-controls">
+          <button className="dicta-play-btn" tabIndex={-1}>▶</button>
+          <div className="dicta-progress-track">
+            <div className="dicta-progress-fill" style={{ width: "100%" }} />
+          </div>
+          <span className="dicta-duration">0:48</span>
+        </div>
+
+        {/* Description */}
+        <div className="dicta-desc">
+          Retranscription audio de la conversation en caméra cachée avec un employé de l'usine de Frangey.
+        </div>
+
+        {/* Transcript */}
+        <div className="dicta-transcript">
+          {[
+            { speaker: "journaliste", text: "Bonjour monsieur !" },
+            { speaker: "employe",     text: "Bonjour, qu'est-ce qui vous amène ici ?" },
+            { speaker: "journaliste", text: "J'enquête, dans le cadre de mon métier, sur l'utilisation des quotas carbone européens par l'entreprise Lafarge. Il se trouve qu'après pas mal de jours d'enquête, plusieurs pistes nous amènent dans cet endroit. Il y a l'air de se passer des choses ici." },
+            { speaker: "employe",     text: "Se passer des choses !? Si c'est de l'ironie, en effet, cela fait bien longtemps que l'usine est au point mort." },
+            { speaker: "journaliste", text: "Des problèmes de rentabilité ?" },
+            { speaker: "employe",     text: "Sûrement, ça fait plusieurs années que l'usine ne tourne plus. Nous, on vient juste une fois de temps en temps car il reste pas mal de matos utiles ici." },
+            { speaker: "journaliste", text: "Donc l'Union Européenne ne vous attribue plus de quotas d'émissions depuis un moment..?" },
+            { speaker: "employe",     text: "Je ne sais pas vraiment de quoi vous parlez mais logiquement non. De toute façon, en ce qui concerne les chiffres de l'usine, le PDG est tellement parano qu'ils doivent être bien gardés, encodés quelque part." },
+            { speaker: "journaliste", text: "On a pu en faire l'expérience…" },
+            { speaker: "employe",     text: "Il paraît, selon un de ses proches collègues, qu'il adore cacher des données sensibles avec un certain « code de Samuel »." },
+            { speaker: "journaliste", text: "Vous savez ce que cela veut dire ?" },
+            { speaker: "employe",     text: "Pas du tout, mais à l'heure d'Internet, vous devriez pouvoir vite trouver." },
+          ].map((line, i) => (
+            <div key={i} className={`dicta-line dicta-line--${line.speaker}`}>
+              <span className="dicta-speaker">
+                {line.speaker === "journaliste" ? "Journaliste" : "Employé"}
+              </span>
+              <p className="dicta-text">{line.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     ),
   },
 
@@ -394,14 +520,19 @@ const DOC_CONTENT = {
         <div className="dv-subtitle dv-subtitle--dark">
           Code-barres EAN-13 — Document récupéré dans les archives
         </div>
-        <div className="dv-placeholder dv-placeholder--dark" style={{ minHeight: "200px" }}>
-          <div className="dv-placeholder-icon" style={{ fontSize: "2.5rem" }}>█▌█▌███▌█</div>
-          <div className="dv-placeholder-text">
-            [PLACEHOLDER — Insérer ici le code-barres en haute résolution à décoder]
-          </div>
+        <div style={{ textAlign: "center", padding: "1rem 0" }}>
+          <img
+            src="/data/code_barre.png"
+            alt="Code-barres EAN-13 — Badge industriel"
+            style={{ width: "100%", maxWidth: "420px", display: "inline-block", imageRendering: "pixelated" }}
+          />
         </div>
         <div className="dv-body dv-body--dark">
-          <p>[PLACEHOLDER — Indications sur le type de code-barres et comment le lire pour obtenir le nombre encodé]</p>
+          <p>
+            Ce code-barres est de type <strong>EAN-13</strong> (13 chiffres).
+            Scannez-le avec une application de lecture de codes-barres sur votre téléphone,
+            ou utilisez un lecteur en ligne pour obtenir le nombre encodé.
+          </p>
         </div>
       </>
     ),

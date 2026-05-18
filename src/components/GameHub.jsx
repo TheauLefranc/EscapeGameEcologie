@@ -12,6 +12,7 @@ const DOCS = [
   { id: "street_view",          icon: "🏭", title: "Street View — Usine Frangey 2011" },
   { id: "discussion_gardien",   icon: "💬", title: "Discussion — Gardien d'usine" },
   { id: "badge",                icon: "🪪", title: "Badge — Site industriel" },
+  { id: "audio_employe",       icon: "🎙", title: "Retranscription audio — Employé d'usine" },
   { id: "frangey_2014",         icon: "📸", title: "Photo Frangey 2014" },
   { id: "code_barre_doc",       icon: "█▌", title: "Code-barres — Badge" },
 ];
@@ -80,8 +81,8 @@ const PUZZLES = [
     num: "06",
     title: "Discussion avec l'employé",
     desc: "À l'intérieur de l'usine, vous croisez Flaurient. Il vous transmet discrètement des informations sur les archives.",
-    needs: ["badge"],
-    needsLabel: "Nécessite : Badge + Entrer dans l'usine (Énigme 5)",
+    needs: ["badge", "audio_employe"],
+    needsLabel: "Nécessite : Badge + Retranscription employé + Entrer dans l'usine (Énigme 5)",
     needsExtra: "puzzle4",
     result: "3512",
     resultLabel: "Code archives",

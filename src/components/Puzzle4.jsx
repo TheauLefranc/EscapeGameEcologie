@@ -64,12 +64,18 @@ export default function Puzzle4({ gameState, onBack, onSolve }) {
                 <span className="audio-meta-chip">Année 2011</span>
                 <span className="audio-meta-chip">Google Street View</span>
               </div>
-              <div className="placeholder-box placeholder-box--dark" style={{ minHeight: "260px" }}>
-                <span style={{ fontSize: "2rem" }}>🏭</span>
-                <span>[PLACEHOLDER — Insérer ici la capture Street View de l'usine de Frangey en 2011]</span>
-              </div>
-              <div style={{ fontSize: "0.88rem", color: "#475569", lineHeight: 1.7, marginTop: "1rem" }}>
-                <p>[PLACEHOLDER — Observations à noter sur la photo : bâtiment, enseignes, code visible, éléments utiles pour trouver le code d'accès]</p>
+              <div style={{ fontSize: "0.88rem", color: "#475569", lineHeight: 1.7 }}>
+                <p>Observez attentivement la façade de l'usine telle qu'elle était en 2011. Les inscriptions visibles sur le bâtiment contiennent un indice essentiel pour trouver le code d'accès.</p>
+                <p style={{ marginTop: "0.75rem" }}>
+                  <a
+                    href="https://www.google.com/maps/@47.787667,4.069611,3a,75y,90t/data=!3m6!1e1!3m4!1s0x0:0x0!2e0!7i13312!8i6656"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ color: "#34d399", textDecoration: "underline" }}
+                  >
+                    Ouvrir la Street View de l'usine →
+                  </a>
+                </p>
               </div>
             </div>
           )}
@@ -78,16 +84,25 @@ export default function Puzzle4({ gameState, onBack, onSolve }) {
           {section === "gardien" && (
             <div className="audio-content">
               <div className="audio-meta">
-                <span className="audio-meta-chip">Dialogue retranscrit</span>
-                <span className="audio-meta-chip">Source : Flaurient</span>
+                <span className="audio-meta-chip">19/11/2016 — 10h36</span>
+                <span className="audio-meta-chip">Durée : 1m36s</span>
+                <span className="audio-meta-chip">Caméra cachée</span>
               </div>
               <div className="audio-transcript">
-                <p>[PLACEHOLDER — Insérer ici le dialogue avec le gardien de l'usine]</p>
-                <p>[L'échange doit permettre de déduire le code d'accès à l'usine]</p>
-              </div>
-              <div className="placeholder-box placeholder-box--dark">
-                <span style={{ fontSize: "1.4rem" }}>💬</span>
-                <span>[PLACEHOLDER — Texte complet de la discussion avec le gardien]</span>
+                {[
+                  { speaker: "Gardien",     text: "Bonjour, vous êtes extérieur ?" },
+                  { speaker: "Journaliste", text: "Non, en fait c'est mon premier jour, lui répondis-je." },
+                  { speaker: "Gardien",     text: "Votre premier jour ! Soit vous mentez, soit vous êtes encore un de nos supérieurs descendus de Paris qui viennent faire un tour dans la région pour « contrôler que l'usine fonctionne correctement »." },
+                  { speaker: "Journaliste", text: "En fait, je viens du siège social d'Issy Les Moulineaux. Comme vous le dites, on m'y a envoyé pour un contrôle." },
+                  { speaker: "Gardien",     text: "D'accord, enregistrez vous sur ce carnet et vous pourrez passer. Vous aurez aussi besoin de ceci." },
+                  { speaker: "Journaliste", text: "J'ouvre la grille avec ce badge ?" },
+                  { speaker: "Gardien",     text: "Non, ce badge vous sert à accéder à toutes les zones gardées par mes collègues sans qu'ils aient besoin de m'appeler pour vérifier votre identité. D'ailleurs, le code barre ne fonctionne nulle part ! C'est à ce portail, celui qui est derrière vous, qu'il vous faudra entrer le code que le PDG vous a donné. Vu que beaucoup de personnes ont ce code et que le PDG ne veut pas le changer, on a ajouté une sécurité en plus du code en déplaçant des lettres sur la devanture de l'usine." },
+                ].map((line, i) => (
+                  <div key={i} style={{ marginBottom: "0.75rem" }}>
+                    <strong style={{ color: line.speaker === "Gardien" ? "#94a3b8" : "#64748b" }}>{line.speaker} : </strong>
+                    <span>{line.text}</span>
+                  </div>
+                ))}
               </div>
             </div>
           )}
@@ -127,11 +142,11 @@ export default function Puzzle4({ gameState, onBack, onSolve }) {
             <ul className="p1-clues-list">
               <li>
                 <span className="p1-clue-icon">🏭</span>
-                [PLACEHOLDER — Indice 1 tiré de la photo Street View]
+                Sur la <strong>façade de l'usine</strong> (Street View 2011), un chiffre est visible. C'est le dernier élément du code.
               </li>
               <li>
                 <span className="p1-clue-icon">💬</span>
-                [PLACEHOLDER — Indice 2 tiré de la discussion avec le gardien]
+                Le gardien explique que le code PDG est <strong>complété par un chiffre</strong> issu des lettres déplacées sur la devanture. Le code final = code bâtonnets + ce chiffre.
               </li>
               <li>
                 <span className="p1-clue-icon">💡</span>
@@ -140,7 +155,7 @@ export default function Puzzle4({ gameState, onBack, onSolve }) {
                 </button>
                 {showHint && (
                   <span className="p1-hint-text">
-                    [PLACEHOLDER — Indice supplémentaire pour trouver le code final]
+                    Le code est à 4 chiffres. Vous connaissez déjà les 3 premiers (Énigme 3). Trouvez le 4e sur la façade de l'usine dans la capture Street View.
                   </span>
                 )}
               </li>

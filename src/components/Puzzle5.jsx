@@ -125,7 +125,7 @@ export default function Puzzle5({ gameState, onBack, onSolve }) {
                 </button>
                 {showHint && (
                   <span className="p1-hint-text">
-                    [PLACEHOLDER — Indice supplémentaire pour trouver le numéro sur la photo Frangey 2014]
+                    Regardez attentivement la porte principale sur la photo de 2014. Un numéro de salle est affiché dessus — c'est votre code d'accès aux archives, à 4 chiffres.
                   </span>
                 )}
               </li>

@@ -46,6 +46,7 @@ function reducer(state, action) {
       if (puzzleId === "puzzle1")       { add("audio_pdg"); add("audio_secretaire"); }
       if (puzzleId === "puzzle_coffre") { add("papier_trouve"); }
       if (puzzleId === "puzzle3")       { add("localisation_usine"); }
+      if (puzzleId === "puzzle4")       { add("audio_employe"); }
       if (puzzleId === "puzzle5")       { add("code_barre_doc"); }
 
       return { ...state, solvedPuzzles, unlockedDocs };
@@ -118,11 +119,33 @@ export default function EscapeGame({ onBack }) {
           </h1>
           <div className="eg-divider" />
           <div className="eg-briefing">
-            <div className="eg-briefing-label">📋 RÉSULTAT</div>
+            <div className="eg-briefing-label">📋 CONCLUSION</div>
             <p>
-              Vous avez identifié l'entreprise, localisé l'usine et obtenu le code d'accès.
-              Votre article fait les gros titres. Le parquet a ouvert une instruction.
+              Nous tenons une info en or ! Depuis 2014 au moins, Lafarge reçoit des quotas
+              importants de la part de l'Union Européenne pour une usine qui n'est même pas
+              en fonctionnement. Cette usine sert à l'entreprise pour collecter un maximum
+              de « droits à polluer » et lui permet de réaliser du bénéfice grâce à la vente
+              de ces quotas.
             </p>
+            <p>
+              Nous devons absolument en parler dans notre futur reportage, cela fera l'effet
+              d'une bombe !
+            </p>
+          </div>
+          <div className="eg-briefing" style={{ marginTop: "1rem" }}>
+            <div className="eg-briefing-label">📰 L'HISTOIRE VRAIE</div>
+            <p>
+              Cette enquête s'inspire d'une affaire réelle. Pour en savoir plus sur la fraude
+              aux quotas carbone de Lafarge, consultez le reportage de Cash Investigation :
+            </p>
+            <a
+              href="https://www.franceinfo.fr/environnement/video-cash-investigation-quotas-carbone-un-business-en-beton-pour-lafarge_1459609.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="eg-link"
+            >
+              Cash Investigation — Quotas carbone : un business en béton pour Lafarge →
+            </a>
           </div>
           <button className="eg-start-btn" onClick={() => { dispatch({ type: "RESET" }); setPhase("intro"); }}>
             <span>Rejouer depuis le début</span>

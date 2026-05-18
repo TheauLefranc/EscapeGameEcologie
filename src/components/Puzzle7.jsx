@@ -82,12 +82,26 @@ export default function Puzzle7({ gameState, onBack, onSolve }) {
             </div>
 
             <div style={{ background: "rgba(0,0,0,0.04)", border: "1px solid rgba(0,0,0,0.08)", borderRadius: "8px", padding: "0.9rem" }}>
-              <div style={{ fontSize: "0.7rem", fontWeight: 700, color: "#888", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "0.4rem" }}>
-                📊 Données EU ETS — Quotas alloués
+              <div style={{ fontSize: "0.7rem", fontWeight: 700, color: "#888", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "0.75rem" }}>
+                📊 Données EU ETS — Quotas alloués (2016)
               </div>
-              <div className="placeholder-box placeholder-box--dark" style={{ minHeight: "100px" }}>
-                <span>[PLACEHOLDER — Insérer ici l'extrait des données EU ETS montrant les quotas alloués à l'installation]</span>
-              </div>
+              <table style={{ width: "100%", fontSize: "0.82rem", borderCollapse: "collapse" }}>
+                <thead>
+                  <tr style={{ borderBottom: "1px solid rgba(0,0,0,0.1)" }}>
+                    <th style={{ textAlign: "left", padding: "0.3rem 0.5rem", color: "#6b7280" }}>Installation</th>
+                    <th style={{ textAlign: "right", padding: "0.3rem 0.5rem", color: "#6b7280" }}>Quotas alloués</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style={{ padding: "0.4rem 0.5rem", color: "#374151" }}>Lafarge — Usine Frangey</td>
+                    <td style={{ padding: "0.4rem 0.5rem", textAlign: "right", fontWeight: 700, color: "#f59e0b" }}>326 210 t CO₂</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p style={{ fontSize: "0.75rem", color: "#9ca3af", marginTop: "0.5rem" }}>
+                Source : base de données EU ETS — Main Activity Code 20-99 — Verified emissions 2016
+              </p>
             </div>
 
           </div>
@@ -118,7 +132,7 @@ export default function Puzzle7({ gameState, onBack, onSolve }) {
               </li>
               <li>
                 <span className="p1-clue-icon">📋</span>
-                [PLACEHOLDER — Formule ou donnée manquante issue des archives EU ETS]
+                Données EU ETS 2016 : quotas alloués à l'installation = <strong>326 210 t CO₂</strong>
               </li>
               <li>
                 <span className="p1-clue-icon">💡</span>
@@ -127,7 +141,7 @@ export default function Puzzle7({ gameState, onBack, onSolve }) {
                 </button>
                 {showHint && (
                   <span className="p1-hint-text">
-                    [PLACEHOLDER — Indice clé pour calculer le surplus exact]
+                    326 210 (quotas alloués) − 184 210 (émissions vérifiées) = surplus frauduleux. Vérifiez que ce résultat correspond à ce qu'annonce le mail de votre source.
                   </span>
                 )}
               </li>

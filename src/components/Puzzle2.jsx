@@ -85,7 +85,7 @@ export default function Puzzle2({ gameState, onBack, onSolve }) {
                 </button>
                 {showHint && (
                   <span className="p1-hint-text">
-                    [PLACEHOLDER — Indice supplémentaire caché]
+                    Les bâtonnets suivent le principe du comptage tally : 4 barres verticales + 1 barre diagonale = 5. Comptez chaque groupe séparément pour obtenir les chiffres un par un.
                   </span>
                 )}
               </li>

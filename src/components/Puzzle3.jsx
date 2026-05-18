@@ -162,7 +162,7 @@ export default function Puzzle3({ gameState, onBack, onSolve }) {
                 </button>
                 {showHint && (
                   <span className="p1-hint-text">
-                    [PLACEHOLDER — Indice clé reliant les durées (secondes) aux degrés de coordonnées GPS]
+                    En GPS, les coordonnées s'expriment en degrés°minutes'secondes". Les durées des enregistrements sont en secondes — la même unité. M. Nort (initiale N → latitude) et Estelle (initiale E → longitude) : soustrayez leur durée en arc-secondes aux coordonnées de Lézinnes.
                   </span>
                 )}
               </li>
