@@ -247,6 +247,54 @@ export default function EscapeGame({ onBack }) {
                   Cash Investigation — Quotas carbone : un business en béton pour Lafarge →
                 </a>
               </div>
+
+              <div className="eg-briefing">
+                <div className="eg-briefing-label">🔗 POUR ALLER PLUS LOIN</div>
+                <p>Ressources pour approfondir le fonctionnement et les limites du marché carbone européen :</p>
+                <div style={{ display: "flex", flexDirection: "column", gap: "10px", marginTop: "4px" }}>
+
+                  <div style={{ borderLeft: "2px solid var(--border-strong)", paddingLeft: "12px" }}>
+                    <div style={{ fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--text-muted)", marginBottom: "3px" }}>Commission européenne — Officiel</div>
+                    <a href="https://climate.ec.europa.eu/eu-action/eu-emissions-trading-system-eu-ets_fr" target="_blank" rel="noopener noreferrer" className="eg-link">
+                      EU ETS — Présentation officielle du système d'échange de quotas →
+                    </a>
+                    <p style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginTop: "3px" }}>Le fonctionnement du marché carbone selon la Commission, son historique et ses réformes (phases 1 à 4).</p>
+                  </div>
+
+                  <div style={{ borderLeft: "2px solid var(--border-strong)", paddingLeft: "12px" }}>
+                    <div style={{ fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--text-muted)", marginBottom: "3px" }}>Agence européenne pour l'environnement</div>
+                    <a href="https://www.eea.europa.eu/en/topics/in-depth/climate-change-mitigation/eu-ets" target="_blank" rel="noopener noreferrer" className="eg-link">
+                      EEA — Données et analyses EU ETS (émissions vérifiées) →
+                    </a>
+                    <p style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginTop: "3px" }}>La base de données réelle utilisée dans ce jeu — émissions vérifiées et quotas alloués par pays et par installation depuis 2005.</p>
+                  </div>
+
+                  <div style={{ borderLeft: "2px solid var(--border-strong)", paddingLeft: "12px" }}>
+                    <div style={{ fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--text-muted)", marginBottom: "3px" }}>Carbon Market Watch — ONG de surveillance</div>
+                    <a href="https://carbonmarketwatch.org" target="_blank" rel="noopener noreferrer" className="eg-link">
+                      Carbon Market Watch — Observatoire critique des marchés carbone →
+                    </a>
+                    <p style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginTop: "3px" }}>ONG européenne qui documente les failles, lobbying et insuffisances du marché carbone du point de vue de la transition écologique.</p>
+                  </div>
+
+                  <div style={{ borderLeft: "2px solid var(--border-strong)", paddingLeft: "12px" }}>
+                    <div style={{ fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--text-muted)", marginBottom: "3px" }}>Réseau Action Climat — France</div>
+                    <a href="https://reseauactionclimat.org/marche-carbone/" target="_blank" rel="noopener noreferrer" className="eg-link">
+                      RAC France — Le marché carbone européen expliqué →
+                    </a>
+                    <p style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginTop: "3px" }}>Analyse du Réseau Action Climat sur les limites du marché carbone et les alternatives politiques pour une transition écologique réelle.</p>
+                  </div>
+
+                  <div style={{ borderLeft: "2px solid var(--border-strong)", paddingLeft: "12px" }}>
+                    <div style={{ fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--text-muted)", marginBottom: "3px" }}>Reporterre — Presse écologique</div>
+                    <a href="https://reporterre.net/Les-quotas-carbone-une-fausse-bonne-idee" target="_blank" rel="noopener noreferrer" className="eg-link">
+                      Reporterre — Les quotas carbone, une fausse bonne idée ? →
+                    </a>
+                    <p style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginTop: "3px" }}>Enquête journalistique sur les effets réels du marché carbone européen sur les émissions industrielles et sur la transition écologique.</p>
+                  </div>
+
+                </div>
+              </div>
             </div>
 
             <div className="eg-dossier-footer">
