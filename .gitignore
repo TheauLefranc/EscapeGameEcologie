@@ -32,8 +32,6 @@ Thumbs.db
 logs/
 *.log
 
-public/data/
-
 # Lock files (optionnel - à commenter si vous voulez les versionner)
 # package-lock.json
 # yarn.lock
