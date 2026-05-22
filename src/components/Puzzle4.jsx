@@ -195,6 +195,14 @@ export default function Puzzle4({ gameState, onBack, onSolve }) {
                   <strong>Accès accordé !</strong>
                   <p>Vous entrez dans l'usine et recueillez les preuves. L'enquête est bouclée.</p>
                 </div>
+                <div style={{ background: "rgba(245,158,11,0.1)", border: "1px solid rgba(245,158,11,0.3)", borderLeft: "3px solid #f59e0b", borderRadius: "6px", padding: "10px 12px" }}>
+                  <div style={{ fontSize: "0.6rem", fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", color: "#f59e0b", marginBottom: "6px", fontFamily: "var(--font-mono)" }}>
+                    Décryptage — Marché des crédits carbone
+                  </div>
+                  <p style={{ fontSize: "0.8rem", color: "#fde68a", lineHeight: 1.65, margin: 0 }}>
+                    La distance entre les marchés financiers du carbone et les cheminées d'usine est au cœur de la critique écologique du système. Les quotas s'échangent à Francfort ou à Londres, dans des salles de marché — loin des sites industriels où les émissions se produisent réellement. Cette abstraction financière facilite la manipulation comptable et éloigne les régulateurs du terrain. Aucun algorithme boursier ne mesure la fumée qui sort d'une cimenterie.
+                  </p>
+                </div>
                 <button className="p1-next-btn" onClick={() => onSolve(CORRECT_ANSWER)}>
                   Terminer l'enquête →
                 </button>

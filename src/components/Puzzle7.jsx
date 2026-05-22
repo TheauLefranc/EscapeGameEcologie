@@ -184,6 +184,14 @@ export default function Puzzle7({ gameState, onBack, onSolve }) {
                     Votre article va faire les gros titres.
                   </p>
                 </div>
+                <div style={{ background: "rgba(245,158,11,0.1)", border: "1px solid rgba(245,158,11,0.3)", borderLeft: "3px solid #f59e0b", borderRadius: "6px", padding: "10px 12px" }}>
+                  <div style={{ fontSize: "0.6rem", fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", color: "#f59e0b", marginBottom: "6px", fontFamily: "var(--font-mono)" }}>
+                    Décryptage — Marché des crédits carbone
+                  </div>
+                  <p style={{ fontSize: "0.8rem", color: "#fde68a", lineHeight: 1.65, margin: 0 }}>
+                    Ces 142 000 quotas revendus sur le marché représentent 142 000 tonnes de CO₂ qui n'ont jamais été réduites, mais dont des tiers ont acheté le « droit » de polluer. C'est la contradiction centrale du marché carbone : chaque quota frauduleux dilue l'intégrité du système global et autorise, ailleurs, une pollution supplémentaire réelle. La transition écologique exige des réductions absolues et vérifiables — le marché carbone, lui, vend du droit à émettre, avec tous les risques de dérive que cette logique financière implique.
+                  </p>
+                </div>
                 <button className="p1-next-btn" onClick={() => onSolve(CORRECT_ANSWER)}>
                   Terminer l'enquête →
                 </button>

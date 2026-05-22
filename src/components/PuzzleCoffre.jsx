@@ -207,6 +207,14 @@ export default function PuzzleCoffre({ gameState, onBack, onSolve }) {
                   <strong>Coffre ouvert !</strong>
                   <p>Un papier est découvert à l'intérieur. Un nouveau document est débloqué dans le tableau.</p>
                 </div>
+                <div style={{ background: "rgba(245,158,11,0.1)", border: "1px solid rgba(245,158,11,0.3)", borderLeft: "3px solid #f59e0b", borderRadius: "6px", padding: "10px 12px" }}>
+                  <div style={{ fontSize: "0.6rem", fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", color: "#f59e0b", marginBottom: "6px", fontFamily: "var(--font-mono)" }}>
+                    Décryptage — Marché des crédits carbone
+                  </div>
+                  <p style={{ fontSize: "0.8rem", color: "#fde68a", lineHeight: 1.65, margin: 0 }}>
+                    Cette carte des émissions européennes révèle une inégalité flagrante d'allocation entre pays. Dès ses premières phases (2005-2012), l'EU ETS a distribué des quotas largement excédentaires — souvent sous pression des lobbys industriels — faisant s'effondrer le prix du carbone à moins de 1 €. Un crédit carbone à ce prix n'incite à rien changer. Le marché a paradoxalement permis à des entreprises polluantes de vendre leurs excédents et de dégager des bénéfices sans réduire une seule tonne de CO₂.
+                  </p>
+                </div>
                 <button className="p1-next-btn" onClick={() => onSolve(CORRECT_ANSWER)}>
                   Retour au tableau →
                 </button>

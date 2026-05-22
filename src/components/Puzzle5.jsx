@@ -165,6 +165,14 @@ export default function Puzzle5({ gameState, onBack, onSolve }) {
                   <strong>Accès aux archives !</strong>
                   <p>Vous entrez dans la salle des archives. Un code-barres sur un document attire votre attention.</p>
                 </div>
+                <div style={{ background: "rgba(245,158,11,0.1)", border: "1px solid rgba(245,158,11,0.3)", borderLeft: "3px solid #f59e0b", borderRadius: "6px", padding: "10px 12px" }}>
+                  <div style={{ fontSize: "0.6rem", fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", color: "#f59e0b", marginBottom: "6px", fontFamily: "var(--font-mono)" }}>
+                    Décryptage — Marché des crédits carbone
+                  </div>
+                  <p style={{ fontSize: "0.8rem", color: "#fde68a", lineHeight: 1.65, margin: 0 }}>
+                    Ces archives dissimulées illustrent l'asymétrie d'information qui fragilise le marché carbone. Les entreprises connaissent précisément leurs émissions réelles ; les régulateurs ne peuvent vérifier les déclarations qu'a posteriori et de manière partielle. Ce déséquilibre est inhérent à tout mécanisme déclaratif : il délègue de facto la surveillance climatique aux pollueurs eux-mêmes. Pour la transition écologique, cela représente une contradiction de méthode difficile à surmonter sans contrôles physiques indépendants.
+                  </p>
+                </div>
                 <button className="p1-next-btn" onClick={() => onSolve(CORRECT_ANSWER)}>
                   Retour au tableau →
                 </button>

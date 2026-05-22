@@ -163,6 +163,14 @@ export default function Puzzle1({ onSolve, onBack }) {
                   <strong>Bonne réponse !</strong>
                   <p>Vous avez identifié l'entreprise. L'enquête continue…</p>
                 </div>
+                <div style={{ background: "rgba(245,158,11,0.1)", border: "1px solid rgba(245,158,11,0.3)", borderLeft: "3px solid #f59e0b", borderRadius: "6px", padding: "10px 12px" }}>
+                  <div style={{ fontSize: "0.6rem", fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", color: "#f59e0b", marginBottom: "6px", fontFamily: "var(--font-mono)" }}>
+                    Décryptage — Marché des crédits carbone
+                  </div>
+                  <p style={{ fontSize: "0.8rem", color: "#fde68a", lineHeight: 1.65, margin: 0 }}>
+                    L'EU ETS était censé inciter les industriels à réduire leurs émissions par la pression économique. Mais ce système repose sur une faille structurelle : les quotas sont alloués sur la base de projections déclarées par les entreprises elles-mêmes. Un groupe comme Lafarge, armé de juristes et de lobbyistes, peut ainsi optimiser ses déclarations pour recevoir des quotas très supérieurs à ses besoins réels — transformant un outil climatique en source de revenus sans réduction effective.
+                  </p>
+                </div>
                 <button className="p1-next-btn" onClick={() => onSolve(CORRECT_ANSWER)}>
                   Retour au tableau →
                 </button>

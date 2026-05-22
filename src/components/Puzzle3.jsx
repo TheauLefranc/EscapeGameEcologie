@@ -202,6 +202,14 @@ export default function Puzzle3({ gameState, onBack, onSolve }) {
                   <strong>Coordonnées trouvées !</strong>
                   <p>L'usine est localisée. Un nouveau document est débloqué dans le tableau.</p>
                 </div>
+                <div style={{ background: "rgba(245,158,11,0.1)", border: "1px solid rgba(245,158,11,0.3)", borderLeft: "3px solid #f59e0b", borderRadius: "6px", padding: "10px 12px" }}>
+                  <div style={{ fontSize: "0.6rem", fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", color: "#f59e0b", marginBottom: "6px", fontFamily: "var(--font-mono)" }}>
+                    Décryptage — Marché des crédits carbone
+                  </div>
+                  <p style={{ fontSize: "0.8rem", color: "#fde68a", lineHeight: 1.65, margin: 0 }}>
+                    La réplique du PDG — « je connais juste extrêmement bien les règles du jeu » — résume une critique fondamentale du marché carbone : il favorise structurellement ceux qui disposent des meilleures ressources juridiques et financières. Les grandes entreprises emploient des équipes entières pour optimiser leurs positions carbone, là où les régulateurs manquent souvent de moyens humains pour contrôler. La transition écologique exige des réductions absolues et vérifiables — pas une compétition asymétrique entre lobbyistes industriels et inspecteurs sous-dotés.
+                  </p>
+                </div>
                 <button className="p1-next-btn" onClick={() => onSolve(CORRECT_ANSWER)}>
                   Retour au tableau →
                 </button>

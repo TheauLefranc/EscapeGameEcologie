@@ -125,6 +125,14 @@ export default function Puzzle2({ gameState, onBack, onSolve }) {
                   <strong>Code trouvé !</strong>
                   <p>Ce code vous sera utile pour entrer dans l'usine.</p>
                 </div>
+                <div style={{ background: "rgba(245,158,11,0.1)", border: "1px solid rgba(245,158,11,0.3)", borderLeft: "3px solid #f59e0b", borderRadius: "6px", padding: "10px 12px" }}>
+                  <div style={{ fontSize: "0.6rem", fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", color: "#f59e0b", marginBottom: "6px", fontFamily: "var(--font-mono)" }}>
+                    Décryptage — Marché des crédits carbone
+                  </div>
+                  <p style={{ fontSize: "0.8rem", color: "#fde68a", lineHeight: 1.65, margin: 0 }}>
+                    Ce code dissimulé reflète l'opacité qui caractérise les échanges de quotas carbone. Ces crédits s'échangent sur des marchés financiers complexes, via des intermédiaires, avec peu de traçabilité réelle. Cette opacité a facilité des fraudes massives : entre 2008 et 2009, des réseaux criminels ont détourné plus de 5 milliards d'euros via des carrousels de TVA sur les quotas européens. Le marché carbone a ainsi produit, en quelques années seulement, l'une des plus grandes fraudes fiscales de l'histoire de l'UE.
+                  </p>
+                </div>
                 <button className="p1-next-btn" onClick={() => onSolve(CORRECT_ANSWER)}>
                   Retour au tableau →
                 </button>

@@ -132,6 +132,14 @@ export default function Puzzle6({ gameState, onBack, onSolve }) {
                     de la source, il permet de calculer le surplus frauduleux.
                   </p>
                 </div>
+                <div style={{ background: "rgba(245,158,11,0.1)", border: "1px solid rgba(245,158,11,0.3)", borderLeft: "3px solid #f59e0b", borderRadius: "6px", padding: "10px 12px" }}>
+                  <div style={{ fontSize: "0.6rem", fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", color: "#f59e0b", marginBottom: "6px", fontFamily: "var(--font-mono)" }}>
+                    Décryptage — Marché des crédits carbone
+                  </div>
+                  <p style={{ fontSize: "0.8rem", color: "#fde68a", lineHeight: 1.65, margin: 0 }}>
+                    Ce chiffre de 184 210 t CO₂ est ce que Lafarge a officiellement déclaré avoir émis. Mais une émission « vérifiée » dans l'EU ETS n'est pas mesurée physiquement : elle est calculée à partir de données fournies par l'entreprise, puis contrôlées par un vérificateur accrédité. Ce système a montré ses limites — les vérificateurs peuvent sous-estimer les émissions par manque de moyens, par conflit d'intérêts, ou simplement faute de remettre en cause les chiffres qu'on leur soumet.
+                  </p>
+                </div>
                 <button className="p1-next-btn" onClick={() => onSolve(CORRECT_ANSWER)}>
                   Retour au tableau →
                 </button>
