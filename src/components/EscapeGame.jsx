@@ -262,11 +262,8 @@ export default function EscapeGame({ onBack }) {
                   </div>
 
                   <div style={{ borderLeft: "2px solid var(--border-strong)", paddingLeft: "12px" }}>
-                    <div style={{ fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--text-muted)", marginBottom: "3px" }}>Agence européenne pour l'environnement</div>
-                    <a href="https://www.eea.europa.eu/en/topics/in-depth/climate-change-mitigation/eu-ets" target="_blank" rel="noopener noreferrer" className="eg-link">
-                      EEA — Données et analyses EU ETS (émissions vérifiées) →
-                    </a>
-                    <p style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginTop: "3px" }}>La base de données réelle utilisée dans ce jeu — émissions vérifiées et quotas alloués par pays et par installation depuis 2005.</p>
+                    
+                    <p style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginTop: "3px" }}>La base de données réelle utilisée dans ce jeu — quotas alloués, émissions vérifiées et transferts par installation depuis 2005, géré par l'Agence européenne pour l'environnement.</p>
                   </div>
 
                   <div style={{ borderLeft: "2px solid var(--border-strong)", paddingLeft: "12px" }}>
@@ -279,18 +276,10 @@ export default function EscapeGame({ onBack }) {
 
                   <div style={{ borderLeft: "2px solid var(--border-strong)", paddingLeft: "12px" }}>
                     <div style={{ fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--text-muted)", marginBottom: "3px" }}>Réseau Action Climat — France</div>
-                    <a href="https://reseauactionclimat.org/marche-carbone/" target="_blank" rel="noopener noreferrer" className="eg-link">
-                      RAC France — Le marché carbone européen expliqué →
+                    <a href="https://reseauactionclimat.org/" target="_blank" rel="noopener noreferrer" className="eg-link">
+                      RAC France — Réseau des ONG françaises pour le climat →
                     </a>
-                    <p style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginTop: "3px" }}>Analyse du Réseau Action Climat sur les limites du marché carbone et les alternatives politiques pour une transition écologique réelle.</p>
-                  </div>
-
-                  <div style={{ borderLeft: "2px solid var(--border-strong)", paddingLeft: "12px" }}>
-                    <div style={{ fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--text-muted)", marginBottom: "3px" }}>Reporterre — Presse écologique</div>
-                    <a href="https://reporterre.net/Les-quotas-carbone-une-fausse-bonne-idee" target="_blank" rel="noopener noreferrer" className="eg-link">
-                      Reporterre — Les quotas carbone, une fausse bonne idée ? →
-                    </a>
-                    <p style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginTop: "3px" }}>Enquête journalistique sur les effets réels du marché carbone européen sur les émissions industrielles et sur la transition écologique.</p>
+                    <p style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginTop: "3px" }}>Coalition d'associations françaises qui analyse les politiques climatiques, dont les mécanismes de marché carbone et leurs alternatives.</p>
                   </div>
 
                 </div>
